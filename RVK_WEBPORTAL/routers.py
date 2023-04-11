@@ -32,7 +32,8 @@ from password_recover.views import (
 
 from news.views import(
     NewsCategoryModelView,
-    NewsModelView
+    NewsModelView,
+    RecentNewsModelView
 )
 
 from about.views import(
@@ -96,8 +97,13 @@ router.register(r'newsshelter',NewsShelterViewset)
 
 #router.register(r'donate',DonationView)
 
+
+#news
 router.register(r'news',NewsModelView)
 router.register(r'news_category',NewsCategoryModelView)
+router.register(r'recent_news',RecentNewsModelView)
+
+
 router.register(r'career_desc',CareerDescModelView)
 
 router.register(r'rvkaboutbanner',RvkAboutBannerView)

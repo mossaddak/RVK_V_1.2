@@ -113,8 +113,6 @@ class EventRegisterViewSet(APIView):
                         return Response({
                                 "message":"Thank For Registration",
                                 "is_pay":False
-
-                                
                             }
                             
                         )

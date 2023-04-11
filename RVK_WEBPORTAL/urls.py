@@ -80,11 +80,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     #account
-    path('api/token/', TokenObtainPairView.as_view(serializer_class=CustomJWTSerializer),
-        name='token_obtain_pair'),
+    #path('api/token/', TokenObtainPairView.as_view(serializer_class=CustomJWTSerializer),name='token_obtain_pair'),
 
-    path('api/token/refresh/', TokenRefreshView.as_view(serializer_class=CustomJWTSerializer),
-        name='token_refresh'),
+    #path('api/token/refresh/', TokenRefreshView.as_view(serializer_class=CustomJWTSerializer),name='token_refresh'),
 
     path('api/accounts/', AccountViewSet.as_view()),
     path('api/verify-account/', VerifyOTPview.as_view()),

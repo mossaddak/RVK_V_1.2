@@ -41,6 +41,12 @@ class NewsModelView(ModelViewSet):
     permission_classes = [IsContentEditor]
     parser_classes = [parsers.FormParser, parsers.MultiPartParser]
 
+class RecentNewsModelView(ModelViewSet):
+    serializer_class = NewsSerializer
+    queryset = News.objects.all()[:4] 
+    permission_classes = [IsContentEditor]
+    parser_classes = [parsers.FormParser, parsers.MultiPartParser]
+
 
 
 
