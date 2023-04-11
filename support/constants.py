@@ -1,0 +1,1 @@
+SUPPORT_CHOICES = (('Pending', "Pending"), ("Resolved", "Resolved"))
