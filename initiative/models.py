@@ -16,8 +16,8 @@ ORDER_STATUS_CHOICES = [
 class HumanitarianTopSection(models.Model):
     category = models.CharField(null=True,blank=False,max_length=50, choices=ORDER_STATUS_CHOICES)
     title = models.CharField(max_length=350, null=True, blank=False)
-    first_desc = RichTextUploadingField(blank=True, null=True, verbose_name="First Description")
-    second_desc = RichTextUploadingField(blank=True, null=True, verbose_name="Second Description")
+    first_desc = models.TextField(blank=True, null=True, verbose_name="First Description")
+    second_desc = models.TextField(blank=True, null=True, verbose_name="Second Description")
 
     img = models.ImageField(blank=False, null=True)
 
@@ -31,7 +31,7 @@ class HumanitarianTopSection(models.Model):
 class HumanitarianBottomSections(models.Model):
     category = models.CharField(null=True, blank=False, max_length=50, choices=ORDER_STATUS_CHOICES)
     title = models.CharField(max_length=350, null=True, blank=False, verbose_name="Title")
-    first_desc = RichTextUploadingField(blank=True, null=True, verbose_name = "First Description")
+    first_desc = models.TextField(blank=True, null=True, verbose_name = "First Description")
     img = models.ImageField(blank=False, null=True)
 
     def __str__(self):
@@ -46,7 +46,7 @@ class PeaceEducationProgramTopSection(models.Model):
     category = models.CharField(null=True, blank=False, max_length=50, choices=ORDER_STATUS_CHOICES)
     title = models.CharField(max_length=350, null=True)
     image = models.ImageField(null=True, blank=True)
-    desc = RichTextUploadingField(blank=True, null=True, verbose_name = "Description")
+    desc = models.TextField(blank=True, null=True, verbose_name = "Description")
 
     def __str__(self):
         return f"{self.pk}.{self.title}"
@@ -56,7 +56,7 @@ class PeaceEducationProgramTopSection(models.Model):
 
 class PeaceEducationProgramSecondSection(models.Model):
     category = models.CharField(null=True, blank=False, max_length=50, choices=ORDER_STATUS_CHOICES)
-    desc = RichTextUploadingField(blank=True, null=True, verbose_name = "Description")
+    desc = models.TextField(blank=True, null=True, verbose_name = "Description")
     image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
@@ -67,8 +67,8 @@ class PeaceEducationProgramSecondSection(models.Model):
 
 class PeaceEducationProgramThiredSection(models.Model):
     category = models.CharField(null=True, blank=False, max_length=50, choices=ORDER_STATUS_CHOICES)
-    first_desc = RichTextUploadingField(blank=True, null=True, verbose_name = "First Description")
-    second_desc = RichTextUploadingField(blank=True, null=True, verbose_name = "Second Description")
+    first_desc = models.TextField(blank=True, null=True, verbose_name = "First Description")
+    second_desc = models.TextField(blank=True, null=True, verbose_name = "Second Description")
     image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
@@ -80,7 +80,7 @@ class PeaceEducationProgramThiredSection(models.Model):
 
 class PeaceEducationProgramFourthSection(models.Model):
     category = models.CharField(null=True, blank=False, max_length=50, choices=ORDER_STATUS_CHOICES)
-    desc = RichTextUploadingField(blank=True, null=True, verbose_name = "Description")
+    desc = models.TextField(blank=True, null=True, verbose_name = "Description")
     image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
@@ -93,7 +93,7 @@ class PeaceEducationProgramFourthSection(models.Model):
 #Peace Education & Knowledge============================================
 class PeaceEducationProgramAndEducationFirstSection(models.Model):
     category = models.CharField(null=True, blank=False, max_length=50, choices=ORDER_STATUS_CHOICES)
-    desc = RichTextUploadingField(blank=True, null=True, verbose_name = "Description")
+    desc = models.TextField(blank=True, null=True, verbose_name = "Description")
     image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
@@ -104,7 +104,7 @@ class PeaceEducationProgramAndEducationFirstSection(models.Model):
 
 class PeaceEducationProgramAndEducationSecondSection(models.Model):
     category = models.CharField(null=True, blank=False, max_length=50, choices=ORDER_STATUS_CHOICES)
-    desc = RichTextUploadingField(blank=True, null=True, verbose_name = "Description")
+    desc = models.TextField(blank=True, null=True, verbose_name = "Description")
     image = models.ImageField(null=True, blank=True)
 
     def __str__(self):

@@ -14,16 +14,16 @@ class PremRawatAboutBanner(models.Model):
         verbose_name_plural = 'Banners'
     
 class PremRawattDescription(models.Model):
-    first_section_description = RichTextUploadingField(blank=True, null=True, verbose_name="First Section Description")
+    first_section_description = models.TextField(blank=True, null=True, verbose_name="First Section Description")
     first_section_img = models.ImageField(null=True, blank=False, verbose_name="First Section Image")
 
-    second_section_description = RichTextUploadingField(blank=True, null=True, verbose_name="Second Section Description")
+    second_section_description = models.TextField(blank=True, null=True, verbose_name="Second Section Description")
     second_section_img = models.ImageField(null=True, blank=False, verbose_name="Second Section Image")
 
-    thired_section_description = RichTextUploadingField(blank=True, null=True, verbose_name="Third Section Description")
+    thired_section_description = models.TextField(blank=True, null=True, verbose_name="Third Section Description")
     third_section_img = models.ImageField(null=True, blank=False, verbose_name="Third Section Image")
 
-    fourth_section_description = RichTextUploadingField(blank=True, null=True, verbose_name="Third Section Description")
+    fourth_section_description = models.TextField(blank=True, null=True, verbose_name="Third Section Description")
     fourth_section_img = models.ImageField(null=True, blank=False, verbose_name="Fourth Section Image")
 
     def __str__(self):

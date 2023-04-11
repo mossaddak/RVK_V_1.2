@@ -18,7 +18,7 @@ class Event(models.Model):
     
     location = models.CharField(max_length=255, null=True)
     capacity = models.PositiveIntegerField(null=True)
-    details = RichTextUploadingField(blank=True, null=True)
+    details = models.TextField(blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
