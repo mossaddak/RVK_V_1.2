@@ -17,6 +17,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 #User = get_user_model()
 
 from .models import User
+from rest_framework.response import Response
 
 
 
@@ -213,22 +214,36 @@ class LoginSerializer(serializers.Serializer):
     def validate(self, data):
 
         print("data================================================", data)
-        if not User.objects.filter(email = data['email']).exists():
+        email = data['email']
+        if not User.objects.filter(email = email).exists():
              raise serializers.ValidationError("Account not found")
+        
+        
+        
+        user = User.objects.filter(email=email)
+        user = user[0]
+        user.verified
+        
+        if user.verified == False:
+            raise serializers.ValidationError("Account is not verified")
+        print("NEwemial=================================", user.verified)
         return data
     
     
     def get_jwt_token(self, data):
 
-        
         user = authenticate(email=data['email'], password=data['password'])
         print("user===========================================", user)
+
+
+        
 
         if not user:
             return {
                 'message':'invalid credentials',
                 'data':{}
             }
+        
         
         
         refresh = RefreshToken.for_user(user)

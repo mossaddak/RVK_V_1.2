@@ -86,6 +86,7 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(serializer_class=CustomJWTSerializer),
         name='token_refresh'),
 
+    path('api/accounts/', AccountViewSet.as_view()),
     path('api/verify-account/', VerifyOTPview.as_view()),
     path('api/login/', LoginView.as_view()),
     
@@ -99,7 +100,7 @@ urlpatterns = [
 
 
     #password_recover
-    path('api/accounts/', AccountViewSet.as_view()),
+    
 
     #payments
     path('api/', include("payment_methodology.urls")),

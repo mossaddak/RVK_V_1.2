@@ -145,6 +145,8 @@ class VerifyOTPview(APIView):
 
 class LoginView(APIView):
     def post(self, request):
+        
+        
         try:
             data = request.data
             serializer = LoginSerializer(data=data)
