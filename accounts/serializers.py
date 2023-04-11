@@ -10,6 +10,9 @@ from payment_methodology.serializer import(
     DonationSerializer
 )
 
+from django.contrib.auth import authenticate
+from rest_framework_simplejwt.tokens import RefreshToken
+
 
 #User = get_user_model()
 
@@ -193,3 +196,47 @@ class UserGetSerializer(serializers.ModelSerializer):
     #     serializer = EventSerializer(events, many=True)
 
     #     return serializer.data
+
+
+
+class VeriFyAccountSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    otp = serializers.CharField()
+
+
+class LoginSerializer(serializers.Serializer):
+    email = serializers.CharField()
+    password = serializers.CharField()
+
+    
+
+    def validate(self, data):
+
+        print("data================================================", data)
+        if not User.objects.filter(email = data['email']).exists():
+             raise serializers.ValidationError("Account not found")
+        return data
+    
+    
+    def get_jwt_token(self, data):
+        user = authenticate(email=data['email'], password=data['password'])
+        print("user===========================================", user)
+
+        if not user:
+            return {
+                'message':'invalid credentials',
+                'data':{}
+            }
+        
+        
+        refresh = RefreshToken.for_user(user)
+        return { 
+                'message':'Login Success',
+                'data':{
+                    'token':{
+                        'refresh': str(refresh),
+                        'access': str(refresh.access_token),
+                    }
+
+                }
+            }

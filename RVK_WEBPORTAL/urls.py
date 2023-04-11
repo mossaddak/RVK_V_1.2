@@ -44,6 +44,11 @@ from accounts.views import(
     AccountViewSet
 )
 
+from accounts.views import(
+    VerifyOTPview,
+    LoginView
+)
+
 
 
 
@@ -73,17 +78,23 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('admin/', admin.site.urls),
+
+    #account
     path('api/token/', TokenObtainPairView.as_view(serializer_class=CustomJWTSerializer),
         name='token_obtain_pair'),
 
     path('api/token/refresh/', TokenRefreshView.as_view(serializer_class=CustomJWTSerializer),
         name='token_refresh'),
+
+    path('api/verify-account/', VerifyOTPview.as_view()),
+    path('api/login/', LoginView.as_view()),
+    
     #path("api/current_user/", current_user),
     path('api/', include(router.urls)),
     
     path('ckeditor', include('ckeditor_uploader.urls')),
 
-    #account
+
     path('', include('ckeditor_uploader.urls')),
 
 

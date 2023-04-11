@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import User
+from .models import (
+    User,
+    UserVerification
+)
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django import forms
 from django.core.exceptions import ValidationError
@@ -15,7 +18,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('verified',)
+        fields = ('verified','otp')
 
     def clean_password2(self):
         # Check that the two password entries match
@@ -43,7 +46,7 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'password', 'phone_number', 'name', 'verified', 'is_active', 'is_superuser')
+        fields = ('email', 'password', 'phone_number', 'name', 'verified', 'is_active', 'is_superuser', "otp")
 
 
 class CustomUserInline(admin.StackedInline):
@@ -60,14 +63,14 @@ class UserAdmin(BaseUserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('email', 'verified', 'is_superuser')
+    list_display = ('email', 'verified', 'is_superuser','otp')
     list_filter = ('is_superuser',)
 
     fieldsets = (
         (None, {'fields': ('email', "phone_number",'password', 'name',"smart_card")}),
         ('Personal', {'fields': ('profile_picture','dob', 'age', "gender")}),
         ('Location', {'fields': ('country', 'address')}),
-        ('Verified', {'fields': ('verified',)}),
+        ('Verified', {'fields': ('verified','otp',)}),
         ('Roles', {'fields': ('groups',)}),
         ('Permissions', {'fields': ('is_superuser', 'is_active')}),
     )
@@ -78,7 +81,7 @@ class UserAdmin(BaseUserAdmin):
             'classes': ('wide',),
             'fields': (
                 'phone_number', 'email', 'name', 'password1', 'password2', 'groups', 'is_superuser',
-                'verified'),
+                'verified','otp'),
         }),
     )
     search_fields = ('email',)
@@ -88,3 +91,4 @@ class UserAdmin(BaseUserAdmin):
 
 # admin.site.unregister(UserAdmin)
 admin.site.register(User, UserAdmin)
+admin.site.register(UserVerification)

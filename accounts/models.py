@@ -8,6 +8,7 @@ import uuid
 class User(AbstractUser):
     # value to determine if user is verified
     verified = models.BooleanField(default=False)
+    otp = models.CharField(max_length=5, null=True, blank=True)
 
     # unique phone number
     phone_number = models.CharField(max_length=15, unique=True, blank=True, null=True)
