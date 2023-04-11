@@ -219,6 +219,8 @@ class LoginSerializer(serializers.Serializer):
     
     
     def get_jwt_token(self, data):
+
+        
         user = authenticate(email=data['email'], password=data['password'])
         print("user===========================================", user)
 
