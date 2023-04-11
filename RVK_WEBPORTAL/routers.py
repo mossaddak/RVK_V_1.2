@@ -76,7 +76,7 @@ from initiative.views import(
 
 router = routers.DefaultRouter()
 
-router.register(r'accounts', AccountViewSet)
+
 router.register(r'posts',PostViewSet)
 
 #event

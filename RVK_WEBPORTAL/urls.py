@@ -25,7 +25,7 @@ from django.urls import path, include, re_path as url
 from . import settings
 from django.conf.urls.static import static
 from django.views.static import serve
-from accounts.views import current_user
+#from accounts.views import current_user
 from .routers import router
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
@@ -38,6 +38,10 @@ from password_recover import views
 #event register
 from events.views import(
     EventRegisterViewSet
+)
+
+from accounts.views import(
+    AccountViewSet
 )
 
 
@@ -74,14 +78,17 @@ urlpatterns = [
 
     path('api/token/refresh/', TokenRefreshView.as_view(serializer_class=CustomJWTSerializer),
         name='token_refresh'),
-    path("api/current_user/", current_user),
+    #path("api/current_user/", current_user),
     path('api/', include(router.urls)),
     
     path('ckeditor', include('ckeditor_uploader.urls')),
 
+    #account
+    path('', include('ckeditor_uploader.urls')),
+
 
     #password_recover
-    path('', include("password_recover.urls")),
+    path('api/accounts/', AccountViewSet.as_view()),
 
     #payments
     path('api/', include("payment_methodology.urls")),

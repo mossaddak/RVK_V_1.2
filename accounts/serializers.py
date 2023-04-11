@@ -11,8 +11,9 @@ from payment_methodology.serializer import(
 )
 
 
-User = get_user_model()
+#User = get_user_model()
 
+from .models import User
 
 
 
@@ -23,7 +24,7 @@ class CustomJWTSerializer(TokenObtainPairSerializer):
             'email': '',
             'password': attrs.get("password")
         }
-        User = get_user_model()
+        User = User
         
         # get user using email or phone number
         user_obj = User.objects.filter(email=attrs.get("email")).first() or User.objects.filter(
@@ -58,15 +59,64 @@ class GroupSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
+    Donation = DonationSerializer(many=True, read_only=True)
     class Meta:
-        model = get_user_model()
+        model = User
         fields = (
-            "__all__"
-            )
+            'id',
+            "password",
+            "name",
+            "email",
+            "smart_card",
+            "gender",
+            "age",
+            "address",
+            "city",
+            "state",
+            "profile_picture",
+            "country",
+            "Donation",
+            "phone_number",
+            "country"
+        )
+
+
 
         extra_kwargs = {
             'password': {'write_only': True},
         }
+
+    def validate(self, data):
+        request = self.context.get('request')
+        current_user_id = request.user.id if request and request.user else None
+        if User.objects.filter(email = data['email']).exclude(id=current_user_id).exists():
+            raise serializers.ValidationError("user already exist")
+        return data
+    
+    def create(self, validate_data):
+        user = User.objects.create(
+            
+            email=validate_data["email"],
+            phone_number = validate_data["phone_number"],
+            name=validate_data["name"],
+            smart_card=validate_data["smart_card"],
+            gender=validate_data["gender"],
+            age=validate_data["age"],
+            address=validate_data["address"],
+            city=validate_data["city"],
+            state=validate_data["state"],
+            profile_picture=validate_data["profile_picture"],
+            country=validate_data["country"],
+
+        )
+        print("End User======================", user)
+        user.set_password(validate_data["password"])
+        user.save()
+
+        return validate_data
+    
+
+
 
 
 class EventSerializer(serializers.ModelSerializer):
@@ -88,20 +138,41 @@ class EventSerializer(serializers.ModelSerializer):
 
 
 class UserGetSerializer(serializers.ModelSerializer):
-    profile_picture = serializers.SerializerMethodField()
-    dob = serializers.SerializerMethodField()
+    #profile_picture = serializers.SerializerMethodField()
+    #dob = serializers.SerializerMethodField()
 
-    Donation = DonationSerializer(many=True, read_only=True)
+    #Donation = DonationSerializer(many=True, read_only=True)
     
     class Meta:
-        model = get_user_model()
-        exclude=("password","verified",)
+        #model = get_user_model()
+        model = User
+        fields = (
+            'id',
+            # 'name',
+            # "email",
+            # "smart_card",
+            # "gender",
+            # "age",
+            # "address",
+            # "city",
+            # "state",
+            # "profile_picture",
+            # "country",
+            # "verified",
+            #"Donation",
+        )
+        #exclude=("password","verified",)
+
+    
+    
     
     def get_profile_picture(self, obj):
         if obj.profile_picture:
             return self.context['request'].build_absolute_uri(obj.profile_picture.url)
         else:
             return None
+        
+
     
     def get_dob(self, obj):
 
