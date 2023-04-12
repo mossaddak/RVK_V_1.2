@@ -57,7 +57,8 @@ class PasswordReset(generics.GenericAPIView):
                 kwargs={"encoded_pk": encoded_pk, "token": token},
             )
 
-            rest_link = f"https://rvkversion13devbymossaddak.pythonanywhere.com{reset_url}"
+            #rest_link = f"https://rvkversion13devbymossaddak.pythonanywhere.com{reset_url}"
+            rest_link = f"http://127.0.0.1:8000{reset_url}"
             mydict = {
                 'rest_link':rest_link
             }
