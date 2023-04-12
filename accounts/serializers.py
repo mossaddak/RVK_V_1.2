@@ -83,9 +83,6 @@ class UserSerializer(serializers.ModelSerializer):
             "phone_number",
             "country"
         )
-
-
-
         extra_kwargs = {
             'password': {'write_only': True},
         }

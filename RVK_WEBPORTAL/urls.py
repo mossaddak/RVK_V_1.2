@@ -41,7 +41,8 @@ from events.views import(
 )
 
 from accounts.views import(
-    AccountViewSet
+    AccountViewSet,
+    
 )
 
 from accounts.views import(
@@ -87,6 +88,7 @@ urlpatterns = [
     path('api/accounts/', AccountViewSet.as_view()),
     path('api/verify-account/', VerifyOTPview.as_view()),
     path('api/login/', LoginView.as_view()),
+    # path('api/profile/', Profile.as_view()),
     
     #path("api/current_user/", current_user),
     path('api/', include(router.urls)),
@@ -98,6 +100,7 @@ urlpatterns = [
 
 
     #password_recover
+    path('', include("password_recover.urls")),
     
 
     #payments

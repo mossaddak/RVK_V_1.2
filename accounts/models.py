@@ -47,7 +47,7 @@ class User(AbstractUser):
 
 
     def __str__(self):
-        return self.email
+        return f"{self.pk}.{self.email}"
 
     # allow phone number to be blank but unique
     def clean(self):

@@ -18,6 +18,13 @@ from .models import(
 )
 from django.conf import settings
 from .email import *
+from django.db import IntegrityError
+from rest_framework.permissions import (
+    IsAuthenticated
+)
+from rest_framework_simplejwt.authentication import (
+    JWTAuthentication
+)
 
 
 #User = get_user_model()
@@ -51,8 +58,7 @@ class AccountViewSet(APIView):
             if serializer.is_valid():
                 serializer.save()
                 return Response(
-                    {
-                        
+                    { 
                         'message':"Your account is created, to verify check your mail. An email is sent.",
                         'data':serializer.data,
                         'mail':send_otp_via_email(serializer.data['email']),
@@ -71,14 +77,112 @@ class AccountViewSet(APIView):
 
     def get(self, request):
 
-        eventregister_model = User.objects.all()
-        serializer = UserSerializer(eventregister_model, many=True)
-        return Response(
-            {
-                'data':serializer.data,
-                'message':"Your account is created"
-            },status = status.HTTP_201_CREATED
-        )
+        if request.user.is_authenticated:
+            email = request.user
+
+            print("User=============================================",email)
+            eventregister_model = User.objects.filter(email=email)
+
+
+            serializer = UserSerializer(eventregister_model, many=True)
+            return Response(
+                {
+                    'data':serializer.data,
+                    'message':"Data Fetch"
+                },status = status.HTTP_201_CREATED
+            )
+        else:
+            return Response(
+                {
+                    'message':"User is not authenticated"
+                },status = status.HTTP_201_CREATED
+            )
+        
+
+
+
+
+
+
+# class Profile(APIView):
+#     permission_classes = [IsAuthenticated]
+#     authentication_classes = [JWTAuthentication]
+
+#     def get(self, request):
+#         users = User.objects.all()
+#         user = request.user
+#         serializer = UserSerializer(user)
+#         return Response(serializer.data)
+    
+
+
+#     def patch(self, request):
+#         try:
+#             #data = 0
+#             #user = request.user
+#             #user = User.objects.filter(id=data.get('id'))
+#             userid = request.user.id
+#             user = User.objects.get(pk=userid)
+#             data = request.data
+#             serializer = UserSerializer(user, data=data, partial=True, context={'request': request})
+
+#             #print("error=========================================",serializer.errors)
+#             print("new=============================", user)
+#             print("==================",serializer)
+
+#             if serializer.is_valid():
+#                 serializer.save()
+#                 return Response(
+#                     {
+#                         'user': serializer.data,
+#                         'message': "Your profile has been updated"
+#                     },
+#                     status=status.HTTP_200_OK
+#                 )
+#             else:
+#                 return Response(
+#                     {
+#                         'user': serializer.errors,
+#                         'message': "Your profile could not be updated"
+#                     },
+#                     status=status.HTTP_400_BAD_REQUEST
+#                 )
+
+
+
+            
+#         except IntegrityError:
+#             return Response(
+#                 {
+#                     'user': None,
+#                     'message': "A user with that username already exists"
+#                 },
+#                 status=status.HTTP_409_CONFLICT
+#             )
+        
+#         except Exception as e:
+#             print(e)
+#             return Response(
+#                 {
+#                     'user': None,
+#                     'message': "An error occurred while updating your profile"
+#                 },
+#                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
+#             ) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 
 class VerifyOTPview(APIView):
