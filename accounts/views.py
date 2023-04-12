@@ -146,8 +146,6 @@ class Profile(APIView):
                     status=status.HTTP_400_BAD_REQUEST
                 )
 
-
-
             
         except IntegrityError:
             return Response(
