@@ -24,45 +24,44 @@ class Event(models.Model):
     updated_at = models.DateTimeField(auto_now=True, null=True)
 
     start = models.DateTimeField(verbose_name="Event Start Time", null=True)
-    #end = models.DateTimeField(verbose_name="Event End Time", null=True)
 
     is_event_complete = models.BooleanField(verbose_name="Is event completed?", null=True, default=False)
 
-    event_price = models.CharField(max_length=250, null=True, verbose_name="Event Price")
+    event_price = models.CharField(max_length=250, null=True, blank=True, verbose_name="Event Price")
 
 
     def __str__(self):
         return f"{self.pk}.{self.event_name}"
     
     class Meta:
-        verbose_name_plural = 'Paid Event'
+        verbose_name_plural = 'Events'
 
 
-class FreeEvent(models.Model):
-    user = models.ManyToManyField(User, related_name="free_event_user", blank=True)
+# class FreeEvent(models.Model):
+#     user = models.ManyToManyField(User, related_name="free_event_user", blank=True)
 
-    event_name = models.CharField(max_length=255, verbose_name="Event Name", null=True)
-    host_name = models.CharField(max_length=255, verbose_name="Host Name", null=True)
+#     event_name = models.CharField(max_length=255, verbose_name="Event Name", null=True)
+#     host_name = models.CharField(max_length=255, verbose_name="Host Name", null=True)
     
-    event_image = models.ImageField(blank=True, verbose_name="Event Image", null=True)
+#     event_image = models.ImageField(blank=True, verbose_name="Event Image", null=True)
     
-    location = models.CharField(max_length=255, null=True)
-    capacity = models.PositiveIntegerField(null=True)
-    details = models.TextField(blank=True, null=True)
+#     location = models.CharField(max_length=255, null=True)
+#     capacity = models.PositiveIntegerField(null=True)
+#     details = models.TextField(blank=True, null=True)
 
-    created_at = models.DateTimeField(auto_now_add=True, null=True)
-    updated_at = models.DateTimeField(auto_now=True, null=True)
+#     created_at = models.DateTimeField(auto_now_add=True, null=True)
+#     updated_at = models.DateTimeField(auto_now=True, null=True)
 
-    start = models.DateTimeField(verbose_name="Event Start Time", null=True)
+#     start = models.DateTimeField(verbose_name="Event Start Time", null=True)
 
-    is_event_complete = models.BooleanField(verbose_name="Is event completed?", null=True, default=False)
+#     is_event_complete = models.BooleanField(verbose_name="Is event completed?", null=True, default=False)
 
 
-    def __str__(self):
-        return f"{self.pk}.{self.event_name}"
+#     def __str__(self):
+#         return f"{self.pk}.{self.event_name}"
     
-    class Meta:
-        verbose_name_plural = 'Free Event'
+#     class Meta:
+#         verbose_name_plural = 'Free Event'
     
 
 class EventRegisterUser(models.Model):

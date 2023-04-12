@@ -85,11 +85,11 @@ urlpatterns = [
     #path('api/token/', TokenObtainPairView.as_view(serializer_class=CustomJWTSerializer),name='token_obtain_pair'),
 
     #path('api/token/refresh/', TokenRefreshView.as_view(serializer_class=CustomJWTSerializer),name='token_refresh'),
-
     path('api/accounts/', AccountViewSet.as_view()),
     path('api/verify-account/', VerifyOTPview.as_view()),
     path('api/login/', LoginView.as_view()),
     path('api/profile/', Profile.as_view()),
+    
     
     #path("api/current_user/", current_user),
     path('api/', include(router.urls)),

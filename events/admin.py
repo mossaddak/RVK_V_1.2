@@ -5,6 +5,15 @@ from .models import (
     
 )
 
+class PurchasedItemAdmin(admin.ModelAdmin):
+    list_display = (
+        "pk",
+        "event_name",
+        "host_name",
+        "event_price"
+    )
 
-admin.site.register(Event)
+
+
+admin.site.register(Event, PurchasedItemAdmin)
 admin.site.register(EventRegisterUser) 

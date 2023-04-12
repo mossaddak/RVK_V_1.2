@@ -169,19 +169,6 @@ class Profile(APIView):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-    
-
 class VerifyOTPview(APIView):
     def post(self, request):
         try:
@@ -191,11 +178,7 @@ class VerifyOTPview(APIView):
             if serializer.is_valid():
                 email = serializer.data['email']
                 otp = serializer.data['otp']
-
                 user = User.objects.filter(email=email)
-
-                
-
                 if not user.exists():
                     return Response(
                         {
@@ -203,7 +186,6 @@ class VerifyOTPview(APIView):
                             'error':"User not found"
                         },status = status.HTTP_404_NOT_FOUND
                     )
-                
                 if not user[0].otp == otp:
                     return Response(
                         {
@@ -211,8 +193,6 @@ class VerifyOTPview(APIView):
                             'error':"Wront OTP"
                         },status = status.HTTP_404_NOT_FOUND
                     )
-                
-
                 user = user[0]
                 if user.verified == False:
                 
