@@ -210,7 +210,7 @@ class UserGetSerializer(serializers.ModelSerializer):
 
 
 class VeriFyAccountSerializer(serializers.Serializer):
-    email = serializers.EmailField()
+    #email = serializers.EmailField()
     otp = serializers.CharField()
 
 
@@ -226,9 +226,6 @@ class LoginSerializer(serializers.Serializer):
         email = data['email']
         if not User.objects.filter(email = email).exists():
              raise serializers.ValidationError("Account not found")
-        
-        
-        
         user = User.objects.filter(email=email)
         user = user[0]
         user.verified

@@ -25,6 +25,7 @@ from rest_framework.permissions import (
 from rest_framework_simplejwt.authentication import (
     JWTAuthentication
 )
+from rest_framework_simplejwt.tokens import RefreshToken
 
 
 #User = get_user_model()
@@ -169,6 +170,57 @@ class Profile(APIView):
 
 
 
+# class VerifyOTPview(APIView):
+#     def post(self, request):
+#         try:
+#             data = request.data
+#             serializer = VeriFyAccountSerializer(data=data)
+            
+#             if serializer.is_valid():
+#                 email = serializer.data['email']
+#                 otp = serializer.data['otp']
+#                 user = User.objects.filter(email=email)
+#                 if not user.exists():
+#                     return Response(
+#                         {
+#                             'message':"You didn't create account yet, please create an account",
+#                             'error':"User not found"
+#                         },status = status.HTTP_404_NOT_FOUND
+#                     )
+#                 if not user[0].otp == otp:
+#                     return Response(
+#                         {
+#                             'message':"Please give here correct OTP",
+#                             'error':"Wront OTP"
+#                         },status = status.HTTP_404_NOT_FOUND
+#                     )
+#                 user = user[0]
+#                 if user.verified == False:
+                
+#                     user.verified = True
+#                     user.save()
+
+#                     #print("OTPemail=====================================",user[0].verified)
+
+#                     return Response(
+#                         {
+#                             'message':"Your account is verified now.",
+#                             'data':serializer.data
+#                         },status = status.HTTP_201_CREATED
+#                     )
+#                 else:
+#                     return Response(
+#                         {
+#                             'message':"Your already verified your account"
+#                         },status = status.HTTP_201_CREATED
+#                     )
+
+            
+#         except Exception as e:
+#             print("Error=======================================", e)
+
+
+
 class VerifyOTPview(APIView):
     def post(self, request):
         try:
@@ -176,9 +228,10 @@ class VerifyOTPview(APIView):
             serializer = VeriFyAccountSerializer(data=data)
             
             if serializer.is_valid():
-                email = serializer.data['email']
+                #email = serializer.data['email']
                 otp = serializer.data['otp']
-                user = User.objects.filter(email=email)
+                user = User.objects.filter(otp=otp)
+                print("User===============================================================================", user)
                 if not user.exists():
                     return Response(
                         {
@@ -200,11 +253,16 @@ class VerifyOTPview(APIView):
                     user.save()
 
                     #print("OTPemail=====================================",user[0].verified)
-
+                    refresh = RefreshToken.for_user(user)
                     return Response(
                         {
-                            'message':"Your account is verified now.",
-                            'data':serializer.data
+                            'message':"Your account is verified now. Wellcome to RVK.",
+                            'data':serializer.data,
+                            'token':{
+                                'refresh': str(refresh),
+                                'access': str(refresh.access_token),
+                            }
+                            
                         },status = status.HTTP_201_CREATED
                     )
                 else:
@@ -217,6 +275,10 @@ class VerifyOTPview(APIView):
             
         except Exception as e:
             print("Error=======================================", e)
+
+
+
+
 
 
 
