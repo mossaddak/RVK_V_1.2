@@ -84,6 +84,8 @@ class EventRegisterUser(models.Model):
     order_date = models.DateTimeField(auto_now=True, null=True)
     is_pay = models.BooleanField(default=False,null=True)
 
+    #token = models.CharField(max_length=4, blank=True, null=True)
+
     def __str__(self):
         return f"{self.pk}.{self.user}"
     

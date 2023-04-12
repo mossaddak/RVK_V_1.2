@@ -32,6 +32,10 @@ from accounts.models import(
 )
 from django.shortcuts import get_object_or_404
 
+from events.helpers import(
+    send_success_email
+)
+
 
 
 
@@ -43,17 +47,14 @@ class EventViewSet(viewsets.ModelViewSet):
 
 
 class EventRegisterViewSet(APIView):
-
     permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
-
-    
-
-
     def post(self, request):
         #TotallRegisterUser = EventRegisterUser.objects.all().count()
         EventCapacity = Event.objects.last().capacity
 
+        register_user_mail = request.user.email
+        print("REQUESTuser===========================================================", request.user.email)
         try:
 
             eventregister_model = EventRegisterUser.objects.all()
@@ -82,7 +83,6 @@ class EventRegisterViewSet(APIView):
                 if TotallRegisterUser <= EventCapacity:
                     amount = 0
                     if event_price == None:
-
                         try:
                             EventRegisterUser.objects.create(
                                 event = event_for_register,
@@ -100,17 +100,14 @@ class EventRegisterViewSet(APIView):
                                 is_pay = request.data.get('amount'),
                                 amount="0"
                             )
+                            send_success_email(register_user_mail)
                         except Exception as e:
                             return Response({
                                     "message":"All field required",
                                     "error":e
                                 }
                             )
-
-
                         event_for_register.user.add(request.user)
-
-
                         return Response({
                                 "message":"Thank For Registration",
                                 "is_pay":False
@@ -129,8 +126,6 @@ class EventRegisterViewSet(APIView):
                         amount = request.data.get('amount')
                         data = {"amount": int(amount)*100, "currency": currency}
                         event_register = client.order.create(data=data)
-
-
                         try:
                             EventRegisterUser.objects.create(
                                 event = event_for_register,
@@ -139,32 +134,27 @@ class EventRegisterViewSet(APIView):
                                 last_name = request.data.get('last_name'),
                                 email = request.data.get('email'),
                                 phone_number = request.data.get('phone_number'),
-
                                 smart_card_number = request.data.get('smart_card_number'),
                                 address = request.data.get('address'),
-
                                 pin_code = request.data.get('pin_code'),
                                 city = request.data.get('pin_code'),
                                 state = request.data.get('state'),
                                 country = request.data.get('country'),
                                 card_details = request.data.get('card_details'),
-
                                 amount=event_register["amount"],
                                 payment_id=event_register["id"],
                                 order_date=event_register["created_at"],
-
                                 is_pay = True
                             )
+                            send_success_email(register_user_mail)
                         except Exception as e:
                             return Response({
                                     "message":"All field required",
-                                    "error":e
+                                    "error":e,
+                                    
                                 }
                             )
-
-
                         event_for_register.user.add(request.user)
-
                         return Response({
                                 "message":"Thank For Registration",
                                 "donation details": int(event_register["amount"])/100,
