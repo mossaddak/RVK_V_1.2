@@ -75,28 +75,28 @@ class AccountViewSet(APIView):
                     
                 )
 
-    def get(self, request):
+    # def get(self, request):
 
-        if request.user.is_authenticated:
-            email = request.user
+    #     if request.user.is_authenticated:
+    #         email = request.user
 
-            print("User=============================================",email)
-            eventregister_model = User.objects.filter(email=email)
+    #         print("User=============================================",email)
+    #         eventregister_model = User.objects.filter(email=email)
 
 
-            serializer = UserSerializer(eventregister_model, many=True)
-            return Response(
-                {
-                    'data':serializer.data,
-                    'message':"Data Fetch"
-                },status = status.HTTP_201_CREATED
-            )
-        else:
-            return Response(
-                {
-                    'message':"User is not authenticated"
-                },status = status.HTTP_201_CREATED
-            )
+    #         serializer = UserSerializer(eventregister_model, many=True)
+    #         return Response(
+    #             {
+    #                 'data':serializer.data,
+    #                 'message':"Data Fetch"
+    #             },status = status.HTTP_201_CREATED
+    #         )
+    #     else:
+    #         return Response(
+    #             {
+    #                 'message':"User is not authenticated"
+    #             },status = status.HTTP_201_CREATED
+    #         )
         
 
 
@@ -104,71 +104,68 @@ class AccountViewSet(APIView):
 
 
 
-# class Profile(APIView):
-#     permission_classes = [IsAuthenticated]
-#     authentication_classes = [JWTAuthentication]
+class Profile(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
 
-#     def get(self, request):
-#         users = User.objects.all()
-#         user = request.user
-#         serializer = UserSerializer(user)
-#         return Response(serializer.data)
+    def get(self, request):
+        users = User.objects.all()
+        user = request.user
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
     
 
 
-#     def patch(self, request):
-#         try:
-#             #data = 0
-#             #user = request.user
-#             #user = User.objects.filter(id=data.get('id'))
-#             userid = request.user.id
-#             user = User.objects.get(pk=userid)
-#             data = request.data
-#             serializer = UserSerializer(user, data=data, partial=True, context={'request': request})
+    def patch(self, request):
+        try:
+            userid = request.user.id
+            user = User.objects.get(pk=userid)
+            data = request.data
+            serializer = UserSerializer(user, data=data, partial=True, context={'request': request})
 
-#             #print("error=========================================",serializer.errors)
-#             print("new=============================", user)
-#             print("==================",serializer)
+            #print("error=========================================",serializer.errors)
+            print("new=============================", user)
+            print("==================",serializer)
 
-#             if serializer.is_valid():
-#                 serializer.save()
-#                 return Response(
-#                     {
-#                         'user': serializer.data,
-#                         'message': "Your profile has been updated"
-#                     },
-#                     status=status.HTTP_200_OK
-#                 )
-#             else:
-#                 return Response(
-#                     {
-#                         'user': serializer.errors,
-#                         'message': "Your profile could not be updated"
-#                     },
-#                     status=status.HTTP_400_BAD_REQUEST
-#                 )
+            if serializer.is_valid():
+                serializer.save()
+                return Response(
+                    {
+                        'user': serializer.data,
+                        'message': "Your profile has been updated"
+                    },
+                    status=status.HTTP_200_OK
+                )
+            else:
+                return Response(
+                    {
+                        'user': serializer.errors,
+                        'message': "Your profile could not be updated"
+                    },
+                    status=status.HTTP_400_BAD_REQUEST
+                )
 
 
 
             
-#         except IntegrityError:
-#             return Response(
-#                 {
-#                     'user': None,
-#                     'message': "A user with that username already exists"
-#                 },
-#                 status=status.HTTP_409_CONFLICT
-#             )
+        except IntegrityError:
+            return Response(
+                {
+                    'user': None,
+                    'message': "A user with that username already exists"
+                },
+                status=status.HTTP_409_CONFLICT
+            )
         
-#         except Exception as e:
-#             print(e)
-#             return Response(
-#                 {
-#                     'user': None,
-#                     'message': "An error occurred while updating your profile"
-#                 },
-#                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
-#             ) 
+        except Exception as e:
+            print(e)
+            return Response(
+                {
+                    'user': None,
+                    'message': "An error occurred while updating your profile"
+                },
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            ) 
 
 
 
