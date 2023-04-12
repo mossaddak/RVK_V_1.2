@@ -30,6 +30,9 @@ from rest_framework.permissions import AllowAny
 from RVK_WEBPORTAL.permissions import (
     IsContentEditor
 )
+from RVK_WEBPORTAL.permissions import(
+    AdminAccessOnlyOtherCanSee
+)
 
 
 # class ReadOnlyPermission(BasePermission):
@@ -41,8 +44,8 @@ from RVK_WEBPORTAL.permissions import (
 class VolunteerViewset(viewsets.ModelViewSet):
     queryset = Volunteer.objects.all()
     serializer_class = VolunteerSerializer
-    filter_backends = (SearchFilter, OrderingFilter, DjangoFilterBackend)
-    permission_classes = [AllowAny]
+    #filter_backends = (SearchFilter, OrderingFilter, DjangoFilterBackend)
+    permission_classes = [AdminAccessOnlyOtherCanSee]
 
 class NewsModelView(ModelViewSet):
     serializer_class = VolunteerDescriptionSerializer

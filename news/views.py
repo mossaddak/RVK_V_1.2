@@ -10,11 +10,13 @@ from rest_framework.viewsets import(
 )
 from .models import(
     NewsCategory,
-    News
+    News,
+    NewsBanner
 )
 from .serializer import(
     NewsSerializer,
-    NewsCategorySerializer
+    NewsCategorySerializer,
+    NewsBannerSerializer
 )
 
 from RVK_WEBPORTAL.permissions import (
@@ -46,6 +48,11 @@ class RecentNewsModelView(ModelViewSet):
     queryset = News.objects.all()[:4] 
     permission_classes = [IsContentEditor]
     parser_classes = [parsers.FormParser, parsers.MultiPartParser]
+
+class NewsBannerModelView(ModelViewSet):
+    serializer_class = NewsBannerSerializer
+    queryset = NewsBanner.objects.all()
+    permission_classes = [IsContentEditor]
 
 
 

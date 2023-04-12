@@ -30,10 +30,12 @@ from password_recover.views import (
     ResetPasswordAPI
 )
 
+#news
 from news.views import(
     NewsCategoryModelView,
     NewsModelView,
-    RecentNewsModelView
+    RecentNewsModelView,
+    NewsBanner
 )
 
 from about.views import(
@@ -85,7 +87,11 @@ router.register(r'events',EventViewSet)
 #router.register(r'eventregister',EventRegisterViewSet)
 
 
+#career
 router.register(r'careers',CareerViewset)
+router.register(r'careers-desc',CareerDescModelView)
+
+
 router.register(r'volunteers',VolunteerViewset)
 router.register(r'contact',ContactViewset)
 router.register(r'announcements',AnnouncementViewset)
@@ -99,12 +105,14 @@ router.register(r'newsshelter',NewsShelterViewset)
 
 
 #news
+router.register(r'news_banner',RecentNewsModelView)
 router.register(r'news',NewsModelView)
 router.register(r'news_category',NewsCategoryModelView)
 router.register(r'recent_news',RecentNewsModelView)
 
 
-router.register(r'career_desc',CareerDescModelView)
+
+#router.register(r'career_desc',CareerDescModelView)
 
 router.register(r'rvkaboutbanner',RvkAboutBannerView)
 router.register(r'rkbaboutdescription',RvkAboutDescriptionView)

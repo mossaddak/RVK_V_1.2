@@ -28,4 +28,15 @@ class News(models.Model):
     class Meta:
         verbose_name_plural = 'Newses'
 
+class NewsBanner(models.Model):
+    title = models.CharField(max_length=250, null=True, blank=True, verbose_name="Title")
+    sub_title = models.CharField(max_length=250, null=True, blank=True, verbose_name="Sub Title")
+
+    def __str__(self):
+        return f"{self.pk}.{self.title}"
+    
+    class Meta:
+        verbose_name_plural = 'News Banner'
+
+
 

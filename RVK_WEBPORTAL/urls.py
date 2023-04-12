@@ -106,9 +106,10 @@ urlpatterns = [
 
     #payments
     path('api/', include("payment_methodology.urls")),
-    path('api/', include("events.urls")),
+    
 
     #event register
+    path('api/', include("events.urls")),
 
 
 
