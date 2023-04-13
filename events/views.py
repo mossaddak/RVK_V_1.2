@@ -19,7 +19,7 @@ from .models import (
 
 from rest_framework import (
     parsers,
-)
+) 
 from RVK_WEBPORTAL.permissions import(
     IsHR,
     RegistrationLimit,
@@ -35,6 +35,7 @@ from django.shortcuts import get_object_or_404
 from events.helpers import(
     send_success_email
 )
+import random
 
 
 
@@ -82,6 +83,7 @@ class EventRegisterViewSet(APIView):
             else:
                 if TotallRegisterUser <= EventCapacity:
                     amount = 0
+                    booking_id = random.randint(1000000,9999999)
                     if event_price == None:
                         try:
                             EventRegisterUser.objects.create(
@@ -98,9 +100,11 @@ class EventRegisterViewSet(APIView):
                                 state = request.data.get('state'),
                                 country = request.data.get('country'),
                                 is_pay = request.data.get('amount'),
-                                amount="0"
+                                amount="0",
+                                booking_id = booking_id
+
                             )
-                            send_success_email(register_user_mail)
+                            send_success_email(register_user_mail, booking_id)
                         except Exception as e:
                             return Response({
                                     "message":"All field required",

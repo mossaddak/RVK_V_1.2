@@ -24,11 +24,13 @@ from django.utils.html import strip_tags
 
 
 #with html template
-def send_success_email(email):
-    
-    otp = random.randint(1000,9999)
+def send_success_email(email, booking_id):
+
+    print("boking id================================================", booking_id)
+
     mydict = {
-        'rest_link':f"You've completed registration successfully"
+        'rest_link':f"You've completed registration successfully",
+        'booking_id':booking_id
     }
     html_template = 'event.html'
     html_message = render_to_string(html_template, context=mydict)
@@ -38,5 +40,5 @@ def send_success_email(email):
     message = EmailMessage(subject, html_message, email_from, recipient_list)
     message.content_subtype = 'html'
     message.send()
-
+  
 

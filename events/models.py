@@ -83,6 +83,7 @@ class EventRegisterUser(models.Model):
     payment_id = models.CharField(max_length=100, null=True)
     order_date = models.DateTimeField(auto_now=True, null=True)
     is_pay = models.BooleanField(default=False,null=True)
+    booking_id = models.CharField(max_length=7, null=True, blank=False)
 
     #token = models.CharField(max_length=4, blank=True, null=True)
 
