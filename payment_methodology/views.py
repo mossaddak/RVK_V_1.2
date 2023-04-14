@@ -68,35 +68,46 @@ class DonateView(APIView):
             doantation = client.order.create(data=data)
             print(doantation["id"])
 
+            first_name = request.data.get('first_name')
+            last_name = request.data.get('last_name')
+            amount=doantation["amount"]
+            payment_id = doantation["id"]
+            pan = request.data.get('pan')
+            address = request.data.get('address')
             DonationModel.objects.create(
                 user = request.user,
 
 
-                first_name = request.data.get('first_name'),
-                last_name = request.data.get('last_name'),
+                first_name = first_name,
+                last_name = last_name,
                 email = request.data.get('email'),
                 phone_number = request.data.get('phone_number'),
-
-                
-                address = request.data.get('address'),
+                address = address,
 
                 pin_code = request.data.get('pin_code'),
                 city = request.data.get('pin_code'),
                 state = request.data.get('state'),
                 country = request.data.get('country'),
-                pan = request.data.get('pan'),
+                pan = pan,
 
                 do_you_benifited = request.data.get('do_you_benifited'),
 
 
-                amount=doantation["amount"],
-                payment_id=doantation["id"],
+                amount=amount,
+                payment_id=payment_id,
                 order_date=doantation["created_at"],
                 isPaid = True
             )
 
             mydict = {
                 'username':request.user,
+                'first_name':first_name,
+                'last_name':last_name,
+                'amount':amount,
+                'payment_id':payment_id,
+                'pan':pan,
+                'address':address
+
             }
 
             html_template = 'payment_success.html'

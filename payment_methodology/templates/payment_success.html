@@ -1,64 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
-{% load static %}
 
-<style>
-    .btn{
-        margin-top:36px;
-        width: 200px;
-        border-radius: 8px;
-        display: block;
-        text-decoration: none;
-        background:#fdc841;
-        color:#fff;
-        padding: 12px 24px 12px 24px;
-        transition: 0.5s;
-    }
-    .btn:hover{
-        background:#8e7023;
-    }
-</style>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
 
-<body style="font-family: sans-serif">
+<body>
+    <div style="max-width: 1000px; min-width: 1000px;">
+        <div style="position:absolute;top:0.33in;left:3.22in;width:2.60in;line-height:0.31in;">
+            <span style="font-style:normal;font-weight:bold;font-size:17pt;font-family:Helvetica;color:#000000">RAJ
+                VIDYA
+                KENDER</span>
+            <span style="font-style:normal;font-weight:bold;font-size:17pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+        <div style="position:absolute;top:0.81in;left:2.41in;width:3.71in;line-height:0.21in;">
+            <span
+                style="font-style:normal;font-weight:normal;font-size:12pt;font-family:Helvetica;color:#000000">Shahurpur,
+                Chhattarpur, New Delhi - 110 074</span>
+            <span style="font-style:normal;font-weight:normal;font-size:12pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+        <div style="position:absolute;top:1.11in;left:1.85in;width:4.80in;line-height:0.21in;">
+            <span style="font-style:normal;font-weight:normal;font-size:12pt;font-family:Helvetica;color:#000000">Phone:
+                011- 26654900, 26654921-23, Fax: 011- 26654502</span>
+            <span style="font-style:normal;font-weight:normal;font-size:12pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+        <div style="position:absolute;top:1.42in;left:2.41in;width:3.81in;line-height:0.21in;">
+            <span
+                style="font-style:normal;font-weight:normal;font-size:12pt;font-family:Helvetica;color:#000000">Registration
+                No: 8845/77 (PAN. AAATR6407J)</span>
+            <span style="font-style:normal;font-weight:normal;font-size:12pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+        <div style="position:absolute;top:2.01in;left:0.69in;width:1.97in;line-height:0.21in;">
+            <span style="font-style:normal;font-weight:bold;font-size:12pt;font-family:Helvetica;color:#000000">Transaction Id:</span>
+            <span
+                style="font-style:normal;font-weight:normal;font-size:12pt;font-family:Helvetica;color:#000000">{{payment_id}}</span><span
+                style="font-style:normal;font-weight:normal;font-size:12pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+        <div style="position:absolute;top:2.01in;left:6.91in;width:1.50in;line-height:0.21in;">
+            <span style="font-style:normal;font-weight:bold;font-size:12pt;font-family:Helvetica;color:#000000">Date:
+            </span>
+            <span
+                style="font-style:normal;font-weight:normal;font-size:12pt;font-family:Helvetica;color:#000000">{{date}}</span><span
+                style="font-style:normal;font-weight:normal;font-size:12pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+        <div style="position:absolute;top:2.44in;left:3.74in;width:4.77in;line-height:0.19in;">
+            <span
+                style="font-style:normal;font-weight:normal;font-size:11pt;font-family:Helvetica;color:#000000">___________________________________________________</span>
+            <span style="font-style:normal;font-weight:normal;font-size:11pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+        <div style="position:absolute;top:2.44in;left:0.69in;width:2.88in;line-height:0.20in;">
+            <span style="font-style:normal;font-weight:bold;font-size:11pt;font-family:Helvetica;color:#000000">We have
+                received with thanks from:</span>
+            <span style="font-style:normal;font-weight:bold;font-size:11pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+        <div style="position:absolute;top:2.44in;left:3.74in;width:1.51in;line-height:0.19in;">
+            <span
+                style="font-style:normal;font-weight:normal;font-size:11pt;font-family:Helvetica;color:#000000">{{first_name}} {{last_name}}</span>
+            <span style="font-style:normal;font-weight:normal;font-size:11pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+        <div style="position:absolute;top:2.87in;left:1.63in;width:6.90in;line-height:0.19in;">
+            <span
+                style="font-style:normal;font-weight:normal;font-size:11pt;font-family:Helvetica;color:#000000">__________________________________________________________________________</span>
+            <span style="font-style:normal;font-weight:normal;font-size:11pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+        <div style="position:absolute;top:2.87in;left:0.69in;width:0.77in;line-height:0.20in;">
+            <span
+                style="font-style:normal;font-weight:bold;font-size:11pt;font-family:Helvetica;color:#000000">Address:</span>
+            <span style="font-style:normal;font-weight:bold;font-size:11pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+        <div style="position:absolute;top:2.87in;left:1.63in;width:2.31in;line-height:0.19in;">
+            <span style="font-style:normal;font-weight:normal;font-size:11pt;font-family:Helvetica;color:#000000">{{address}}</span>
+            <span style="font-style:normal;font-weight:normal;font-size:11pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+        <div style="position:absolute;top:3.30in;left:0.69in;width:7.83in;line-height:0.19in;">
+            <span
+                style="font-style:normal;font-weight:normal;font-size:11pt;font-family:Helvetica;color:#000000">____________________________________________________________________________________</span>
+            <span style="font-style:normal;font-weight:normal;font-size:11pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+        <div style="position:absolute;top:3.30in;left:0.77in;width:3.08in;line-height:0.19in;">
+            <span
+                style="font-style:normal;font-weight:normal;font-size:11pt;font-family:Helvetica;color:#000000"></span>
+            <span style="font-style:normal;font-weight:normal;font-size:11pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+        <!-- <div style="position:absolute;top:3.73in;left:0.69in;width:7.43in;line-height:0.20in;">
+            <span style="font-style:normal;font-weight:bold;font-size:11pt;font-family:Helvetica;color:#000000">Amount
+                in
+                words: </span></SPAN><br />
+        </div>
+        <div style="position:absolute;top:3.73in;left:0.69in;width:7.43in;line-height:0.19in;">
+            <DIV style="position:relative; left:1.55in;">
+                <span
+                    style="font-style:normal;font-weight:normal;font-size:11pt;font-family:Helvetica;color:#000000">_______________________________________________________________</span>
+                <span style="font-style:normal;font-weight:normal;font-size:11pt;font-family:Helvetica;color:#000000">
+                </span><br /></SPAN>
+            </DIV>
+        </div>
+        <div style="position:absolute;top:3.73in;left:2.23in;width:1.03in;line-height:0.19in;">
+            <span style="font-style:normal;font-weight:normal;font-size:11pt;font-family:Helvetica;color:#000000">One
+                Rupees</span>
+            <span style="font-style:normal;font-weight:normal;font-size:11pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+        <div style="position:absolute;top:3.73in;left:8.16in;width:0.42in;line-height:0.20in;">
+            <span
+                style="font-style:normal;font-weight:bold;font-size:11pt;font-family:Helvetica;color:#000000">Only</span>
+            <span style="font-style:normal;font-weight:bold;font-size:11pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div> -->
 
-    <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
-        <tr>
-            <td align="center" valign="top">
-                <table border="0" cellpadding="20" cellspacing="0" width="600" id="emailContainer">
-                    <tr>
-                        <td align="center" valign="top">
-                            <h2 style="margin-top: 50px; font-size:25px; line-height:25px; color: #293145;">
-                                Payment Recept
-                            </h2>
+        <div
+            style="position:absolute;top:4.38in;left:0.60in;width:0.32in;line-height:0.20in;border: 1px black solid; padding: 5px;">
+            <span
+                style="font-style:normal;font-weight:bold;font-size:11pt;font-family:Helvetica;color:#000000;">RS.</span>
+            <span style="font-style:normal;font-weight:bold;font-size:11pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
 
-                            <div style="margin-top:36px;color:#5A6277;line-height: 24px;">
-                                <span>Your Pay ment Successfully Done!</span>
-                                </br>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
+
+        <div
+            style="position:absolute;top:4.38in;left:1.03in;width:0.52in;line-height:0.19in;border: 1px black solid; padding: 5px;">
+            <span style="font-style:normal;font-weight:normal;font-size:11pt;font-family:Helvetica;color:#000000">{{amount}}
+                /-</span>
+            <span style="font-style:normal;font-weight:normal;font-size:11pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+
+        <div
+            style="position:absolute;top:4.38in;left:6.40in;width:2.00in;line-height:0.20in; border: 1px black solid; padding: 5px;">
+            <span style="font-style:normal;font-weight:bold;font-size:11pt;font-family:Helvetica;color:#000000">Donor
+                PAN:{{pan}}</span>
+            <span style="font-style:normal;font-weight:bold;font-size:11pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+
+
+        <div style="position:absolute;top:4.81in;left:6.49in;width:1.94in;line-height:0.19in;">
+            <span style="font-style:normal;font-weight:normal;font-size:11pt;font-family:Helvetica;color:#000000">For
+                RAJ
+                VIDYA KENDER</span>
+            <span style="font-style:normal;font-weight:normal;font-size:11pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+        <div style="position:absolute;top:5.24in;left:3.05in;width:3.29in;line-height:0.18in;">
+            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#000000">Income
+                tax
+                exemption under 80G of 1961 Act by</span>
+            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+        <div style="position:absolute;top:5.46in;left:2.62in;width:4.02in;line-height:0.18in;">
+            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#000000">Order
+                no.
+                DIT (E)/80G/2010-11/R 239/1390 dated 8/9/2010</span>
+            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+        <div style="position:absolute;top:5.67in;left:2.62in;width:4.13in;line-height:0.18in;">
+            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#000000">This
+                is a
+                computer-generated receipt and needs no signature</span>
+            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#000000">
+            </span><br /></SPAN>
+        </div>
+    </div>
 
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

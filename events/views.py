@@ -105,7 +105,6 @@ class EventRegisterViewSet(APIView):
                                 is_pay = request.data.get('amount'),
                                 amount="0",
                                 booking_id = booking_id
-
                             )
                             send_success_email(register_user_mail, booking_id, first_name, last_name, amount, event_for_register)
                         except Exception as e:
