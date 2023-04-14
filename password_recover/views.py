@@ -86,7 +86,10 @@ class PasswordReset(generics.GenericAPIView):
             return response.Response(
                 {
                     "message": "Please check your mail an email is sent.",
-                    "reset link": rest_link
+                    "reset_link": rest_link,
+                    "encoded_pk":encoded_pk,
+                    "token":token
+
                 },
                 status=status.HTTP_200_OK,
             )

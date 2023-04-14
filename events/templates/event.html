@@ -1,277 +1,157 @@
-<!-- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<html>
-
-<style>
-    table {border-collapse: collapse;}
-    table td {padding: 0px}
-</style>
+<!doctype html>
+<html lang="en">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+
+    <title>Registration Recept</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@100;200;300;400;500;600;700&display=swap');
+
+        .anuphan {
+            font-family: 'Anuphan', sans-serif;
+
+        }
+
+        .container {
+            margin: 30px 100px;
+            max-width: 1000px;
+            min-width: 1000px;
+        }
+
+        .top_heading {
+            text-align: center;
+        }
+
+        .nav_ {
+            background-color: rgb(43, 181, 240);
+            color: white;
+        }
+
+        .second_sec {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+        }
+
+        .logo_container {
+            background-color: rgb(246, 246, 246);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 10px 0px;
+        }
+
+        .organizer_container {
+            background-color: rgb(246, 246, 246);
+            padding: 10px 40px;
+        }
+
+        .organizer_lable {
+            color: #4758b0;
+            font-size: 16px;
+            line-height: 0.1;
+        }
+
+        .organizer {
+            color: #4758b0;
+            font-size: 20px;
+            line-height: 0.1;
+        }
+
+        .user_container {
+            background-color: white;
+            padding: 10px 40px;
+        }
+
+        .qr {
+            width: 150px;
+            height: 150px;
+        }
+
+        table {
+            margin-bottom: 10px;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding-right: 20px;
+            padding-bottom: 10px;
+        }
+    </style>
 </head>
 
 <body>
 
-    <img style="position:absolute;top:0.55in;left:0.54in;width:8.18in;height:15.01in" src="https://i.postimg.cc/QH6tSS3M/ci-1.png" />
-    <img style="position:absolute;top:0.55in;left:0.55in;width:8.18in;height:15.01in" src="https://i.postimg.cc/DSs9myBK/ci-2.png" />
-    <img style="position:absolute;top:0.55in;left:0.55in;width:8.18in;height:15.01in" src="ci_3.png" />
-    <img style="position:absolute;top:0.77in;left:0.66in;width:7.27in;height:0.44in" src="vi_1.png" />
-    <img style="position:absolute;top:1.22in;left:0.66in;width:7.27in;height:1.06in" src="vi_2.png" />
-    <img style="position:absolute;top:2.28in;left:0.66in;width:7.27in;height:1.49in" src="vi_3.png" />
-    <img style="position:absolute;top:3.77in;left:0.66in;width:7.27in;height:0.34in" src="vi_4.png" />
-    <img style="position:absolute;top:4.11in;left:0.66in;width:7.27in;height:10.48in" src="ci_4.png" />
-    <div style="position:absolute;top:4.17in;left:1.02in;width:1.81in;line-height:0.24in;">
-        <span style="font-style:normal;font-weight:bold;font-size:13pt;font-family:Helvetica;color:#b2a78c">Hi Dheeraj
-            Verma,</span>
-        <span style="font-style:normal;font-weight:bold;font-size:13pt;font-family:Helvetica;color:#b2a78c">
-        </span><br /></SPAN>
-    </div>
-    <div style="position:absolute;top:4.63in;left:1.02in;width:4.05in;line-height:0.17in;">
-        <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">Thank you
-            for purchasing 1 ticket(s) for </span>
-        <span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#444444">Prerna 2022,
-            Jaipur</span>
-        <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">.</span>
-        <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">
-        </span><br /></SPAN>
-    </div>
-    <div style="position:absolute;top:5.04in;left:1.02in;width:2.64in;line-height:0.17in;">
-        <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">Your
-            Registration details are as follows:</span>
-        <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">
-        </span><br /></SPAN>
-    </div>
-    <div style="position:absolute;top:5.25in;left:1.02in;width:1.44in;line-height:0.17in;">
-        <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">Booking Id
-            : </span>
-        <span
-            style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#444444">7812635</span>
-        <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">
-        </span><br /></SPAN>
-    </div>
-    <div style="position:absolute;top:5.70in;left:1.05in;width:0.48in;line-height:0.18in;">
-        <span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#444444">NAME</span>
-        <span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#444444">
-        </span><br /></SPAN>
-    </div>
-    <div style="position:absolute;top:5.70in;left:3.25in;width:0.43in;line-height:0.18in;">
-        <span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#444444">TYPE</span>
-        <span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#444444">
-        </span><br /></SPAN>
-    </div>
-    <div style="position:absolute;top:5.70in;left:5.43in;width:0.49in;line-height:0.18in;">
-        <span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#444444">PRICE</span>
-        <span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#444444">
-        </span><br /></SPAN>
-    </div>
-    <div style="position:absolute;top:5.95in;left:1.05in;width:1.03in;line-height:0.17in;">
-        <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">Dheeraj
-            Verma</span>
-        <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">
-        </span><br /></SPAN>
-    </div>
-    <div style="position:absolute;top:5.95in;left:3.25in;width:0.41in;line-height:0.17in;">
-        <span
-            style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">Silver</span>
-        <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">
-        </span><br /></SPAN>
-    </div>
-    <div style="position:absolute;top:5.95in;left:5.43in;width:0.79in;line-height:0.17in;">
-        <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">INR
-            200.00</span>
-        <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">
-        </span><br /></SPAN>
-    </div>
-    <div style="position:absolute;top:8.94in;left:1.02in;width:1.14in;line-height:0.19in;">
-        <span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#b2a78c">Event
-            Details :</span>
-        <span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#b2a78c">
-        </span><br /></SPAN>
-    </div>
-    <div style="position:absolute;top:9.22in;left:1.27in;width:0.69in;line-height:0.17in;">
-        <span
-            style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">Organizer</span>
-        <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">
-        </span><br /></SPAN>
-    </div>
-    <div style="position:absolute;top:9.22in;left:2.04in;width:1.34in;line-height:0.18in;">
-        <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">: </span>
-        <span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#444444">Raj Vidya
-            Kender</span><span
-            style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#444444">
-        </span><br /></SPAN>
-    </div>
-    <div style="position:absolute;top:9.56in;left:1.27in;width:0.47in;line-height:0.17in;">
-        <span
-            style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">Venue</span>
-        <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">
-        </span><br /></SPAN>
-    </div>
-    <div style="position:absolute;top:9.56in;left:2.04in;width:3.09in;line-height:0.18in;">
-        <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">:
-        </span><span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#444444">Raj
-            Vidya Kender, Jaipur, Panwaliya, India</span><span
-            style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#444444">
-        </span><br /></SPAN>
-    </div>
-    <div style="position:absolute;top:9.90in;left:1.27in;width:3.50in;line-height:0.18in;">
-        <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">Event Date
-            : </span>
-        <span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#444444">10 Apr 2022
-            : 4:30 AM - 8:30 AM (IST)</span><span
-            style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#444444">
-        </span><br /></SPAN>
-    </div>
-    <div style="position:absolute;top:10.25in;left:1.27in;width:2.74in;line-height:0.17in;">
-        <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">Event Link
-        </span></SPAN><br />
-    </div>
-    <div style="position:absolute;top:10.25in;left:1.27in;width:2.74in;line-height:0.18in;">
-        <DIV style="position:relative; left:0.78in;">
-            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Helvetica;color:#444444">:
-            </span>
-            <a href="https://www.townscript.com/e/prerna-2022-jaipur-432202">
-                <span
-                    style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#b2a78c">prerna-2022-jaipur-432202</span></a>
-            <span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#b2a78c">
-            </span><br /></SPAN>
-        </DIV>
-    </div>
-    <div style="position:absolute;top:10.89in;left:1.02in;width:1.97in;line-height:0.19in;">
-        <span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#b2a78c">Message from
-            organizer :</span><span
-            style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#b2a78c">
-        </span><br /></SPAN>
-    </div>
-    <img style="position:absolute;top:9.19in;left:1.05in;width:0.17in;height:0.17in" src="ri_1.png" />
-    <img style="position:absolute;top:9.53in;left:1.05in;width:0.17in;height:0.17in" src="ri_2.png" />
-    <img style="position:absolute;top:9.87in;left:1.05in;width:0.17in;height:0.17in" src="ri_3.png" />
-    <img style="position:absolute;top:10.22in;left:1.05in;width:0.17in;height:0.17in" src="ri_4.png" />
-    <div style="position:absolute;top:0.95in;left:5.10in;width:0.35in;line-height:0.14in;">
-        <a
-            href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https://townscript.com/e/prerna-2022-jaipur-432202&amp;p[images][0]=&amp;p[title]=I%20am%20attending%20on%20Townscript.com%20&amp;p[summary]=">
-            <span
-                style="font-style:normal;font-weight:bold;font-size:7pt;font-family:Helvetica;color:#140f02">Share</span></a>
-        <span style="font-style:normal;font-weight:bold;font-size:7pt;font-family:Helvetica;color:#140f02">
-        </span><br /></SPAN>
-    </div>
-    <div style="position:absolute;top:0.95in;left:5.70in;width:0.35in;line-height:0.14in;">
-        <a href="http://twitter.com/home?status=I%20am%20attending%20prerna-2022-jaipur-432202%20via%20@Townscript.com">
-            <span
-                style="font-style:normal;font-weight:bold;font-size:7pt;font-family:Helvetica;color:#140f02">Tweet</span></a>
-        <span style="font-style:normal;font-weight:bold;font-size:7pt;font-family:Helvetica;color:#140f02">
-        </span><br /></SPAN>
-    </div>
-    <div style="position:absolute;top:3.22in;left:1.00in;width:0.84in;line-height:0.19in;">
-        <span
-            style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#006699">Organizer:</span>
-        <span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Helvetica;color:#006699">
-        </span><br /></SPAN>
-    </div>
-    <div style="position:absolute;top:1.64in;left:1.14in;width:6.40in;line-height:0.38in;">
-        <span style="font-style:normal;font-weight:bold;font-size:21pt;font-family:Helvetica;color:#fafaf5">Your
-            Registration for Prerna 2022, Jaipur!</span>
-        <span style="font-style:normal;font-weight:bold;font-size:21pt;font-family:Helvetica;color:#fafaf5">
-        </span><br /></SPAN>
-    </div>
-    <div style="position:absolute;top:3.44in;left:1.00in;width:1.74in;line-height:0.24in;">
-        <span style="font-style:normal;font-weight:bold;font-size:13pt;font-family:Helvetica;color:#006699">Raj Vidya
-            Kender</span>
-        <span style="font-style:normal;font-weight:bold;font-size:13pt;font-family:Helvetica;color:#006699">
-        </span><br /></SPAN>
-    </div>
-    <img style="position:absolute;top:0.86in;left:0.76in;width:1.70in;height:0.26in" src="ri_5.png" />
-    <img style="position:absolute;top:0.91in;left:4.93in;width:0.17in;height:0.17in" src="ri_6.png" />
-    <img style="position:absolute;top:0.91in;left:5.53in;width:0.17in;height:0.17in" src="ri_7.png" />
-    <img style="position:absolute;top:2.41in;left:3.95in;width:0.61in;height:0.02in" src="vi_5.png" />
-    <img style="position:absolute;top:2.41in;left:3.95in;width:0.02in;height:0.61in" src="vi_6.png" />
-    <img style="position:absolute;top:3.00in;left:3.95in;width:0.61in;height:0.02in" src="vi_7.png" />
-    <img style="position:absolute;top:2.41in;left:4.54in;width:0.02in;height:0.61in" src="vi_8.png" />
-    <img style="position:absolute;top:3.00in;left:3.97in;width:0.57in;height:0.57in" src="ri_8.jpeg" />
-    <img style="position:absolute;top:8.25in;left:1.02in;width:1.91in;height:1.91in" src="ri_9.png" />
-</body>
-
-</html> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<html>
-{% load static %}
-
-<style>
-    .btn{
-        margin-top:36px;
-        width: 200px;
-        border-radius: 8px;
-        display: block;
-        text-decoration: none;
-        background:#fdc841;
-        color:#fff;
-        padding: 12px 24px 12px 24px;
-        transition: 0.5s;
-    }
-    .btn:hover{
-        background:#8e7023;
-    }
-</style>
-
-<body style="font-family: sans-serif">
-
-    <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
-        <tr>
-            <td align="center" valign="top">
-                <table border="0" cellpadding="20" cellspacing="0" width="600" id="emailContainer">
+    <div class="container anuphan">
+        <div class="second_sec">
+            <div class="nav_" style="padding: 10px;">
+                <h2 class="top_heading">Your Registration for Prerna 2022, Jaipur!</h2>
+            </div>
+            <div class="logo_container" style="display: flex; justify-content: center;">
+                <img src="https://i.postimg.cc/mz3ZsYZb/logo.jpg" style="display: block;" alt="logo" class="logo">
+            </div>
+            <div class="organizer_container">
+                <h6 class="organizer_lable">Organizer:</h6>
+                <h5 class="organizer">Raj Vidya Kender</h5>
+            </div>
+            <div class="user_container px-5 pb-3">
+                <hr>
+                <h5 style="color:#b2a78c;font-size: 20px;">Hi Dheeraj Verma,</h5>
+                <p>Thank you for purchasing 1 ticket(s) for <b>Prerna 2022, Jaipur.</b></p>
+                <p>Your Registration details are as follows:</p>
+                <p>Booking Id : <b>7812635</b></p>
+                <table>
                     <tr>
-                        <td align="center" valign="top">
-                            <h2 style="margin-top: 50px; font-size:25px; line-height:25px; color: #293145;">
-                                Registration Confirmation
-                            </h2>
-
-                            <div style="margin-top:36px;color:#5A6277;line-height: 24px;">
-                                <span>Your registration successfully completed</span>
-                                </br>
-                            </div>
-
-                            <h2 style="text-align: center;">Your Booking Id:{{booking_id}}</h2>
-
-                            <a href='https://postimg.cc/w1sWFfm5' target='_blank'><img src='https://i.postimg.cc/w1sWFfm5/ri-8.jpg' border='0' alt='ri-8'/></a>
-                        </td>
+                        <th>NAME</th>
+                        <th>TYPE</th>
+                        <th>PRICE</th>
                     </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
+                    <tr>
+                        <td>Dheeraj Verma</td>
+                        <td>Silver</td>
+                        <td>INR 200.00</td>
+                    </tr>
 
+                </table>
+                <!-- <div class="d-flex pt-4 pb-2">
+                    <img src="qr.png" class="qr" alt="qr code">
+                </div> -->
+
+                <p style="color:#b2a78c;" class="mt-4">Event Details:</p>
+                <div style="font-size: 15px; padding-bottom: 20px;">
+                    <div style="padding: 3px 0px;">Organizer : <b>Raj Vidya Kender</b></div>
+                    <div style="padding: 3px 0px;">Venue : <b>Raj Vidya Kender, Jaipur, Panwaliya, India</b></div>
+                    <div style="padding: 3px 0px;">Event Date : <b> 10 Apr 2022 : 4:30 AM - 8:30 AM (IST)</b></div>
+                    <div style="padding: 3px 0px;">Event Link : <a href="#!"
+                            style="color:#b2a78c;">prerna-2022-jaipur-432202</b></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
