@@ -106,10 +106,10 @@
             </div>
             <div class="user_container px-5 pb-3">
                 <hr>
-                <h5 style="color:#b2a78c;font-size: 20px;">Hi Dheeraj Verma,</h5>
-                <p>Thank you for purchasing 1 ticket(s) for <b>Prerna 2022, Jaipur.</b></p>
+                <h5 style="color:#b2a78c;font-size: 20px;">Hi {{first_name}} {{last_name}},</h5>
+                <p>Thank you for purchasing 1 ticket(s) for <b>{{location}}.</b></p>
                 <p>Your Registration details are as follows:</p>
-                <p>Booking Id : <b>7812635</b></p>
+                <p>Booking Id : <b>{{booking_id}}</b></p>
                 <table>
                     <tr>
                         <th>NAME</th>
@@ -117,9 +117,9 @@
                         <th>PRICE</th>
                     </tr>
                     <tr>
-                        <td>Dheeraj Verma</td>
+                        <td>{{first_name}} {{last_name}}</td>
                         <td>Silver</td>
-                        <td>INR 200.00</td>
+                        <td>INR {{amount}}</td>
                     </tr>
 
                 </table>
@@ -130,10 +130,9 @@
                 <p style="color:#b2a78c;" class="mt-4">Event Details:</p>
                 <div style="font-size: 15px; padding-bottom: 20px;">
                     <div style="padding: 3px 0px;">Organizer : <b>Raj Vidya Kender</b></div>
-                    <div style="padding: 3px 0px;">Venue : <b>Raj Vidya Kender, Jaipur, Panwaliya, India</b></div>
-                    <div style="padding: 3px 0px;">Event Date : <b> 10 Apr 2022 : 4:30 AM - 8:30 AM (IST)</b></div>
-                    <div style="padding: 3px 0px;">Event Link : <a href="#!"
-                            style="color:#b2a78c;">prerna-2022-jaipur-432202</b></div>
+                    <div style="padding: 3px 0px;">Venue : <b>{{location}}</b></div>
+                    <div style="padding: 3px 0px;">Event Date : <b> {{event_date}}</b></div>
+                    <div style="padding: 3px 0px;">Event Link : <a href="#!" style="color:#b2a78c;">prerna-2022-jaipur-432202</b></div>
                 </div>
             </div>
         </div>

@@ -86,11 +86,14 @@ class EventRegisterViewSet(APIView):
                     booking_id = random.randint(1000000,9999999)
                     if event_price == None:
                         try:
+                            first_name = request.data.get('first_name')
+                            last_name = request.data.get('last_name')
+                            amount = "Free"
                             EventRegisterUser.objects.create(
                                 event = event_for_register,
                                 user = request.user,
-                                first_name = request.data.get('first_name'),
-                                last_name = request.data.get('last_name'),
+                                first_name = first_name,
+                                last_name = last_name,
                                 email = request.data.get('email'),
                                 phone_number = request.data.get('phone_number'),
                                 smart_card_number = request.data.get('smart_card_number'),
@@ -104,7 +107,7 @@ class EventRegisterViewSet(APIView):
                                 booking_id = booking_id
 
                             )
-                            send_success_email(register_user_mail, booking_id)
+                            send_success_email(register_user_mail, booking_id, first_name, last_name, amount, event_for_register)
                         except Exception as e:
                             return Response({
                                     "message":"All field required",
@@ -131,11 +134,14 @@ class EventRegisterViewSet(APIView):
                         data = {"amount": int(amount)*100, "currency": currency}
                         event_register = client.order.create(data=data)
                         try:
+                            first_name = request.data.get('first_name')
+                            last_name = request.data.get('last_name')
+                            amount = event_register["amount"]/100
                             EventRegisterUser.objects.create(
                                 event = event_for_register,
                                 user = request.user,
-                                first_name = request.data.get('first_name'),
-                                last_name = request.data.get('last_name'),
+                                first_name = first_name,
+                                last_name = last_name,
                                 email = request.data.get('email'),
                                 phone_number = request.data.get('phone_number'),
                                 smart_card_number = request.data.get('smart_card_number'),
@@ -145,12 +151,12 @@ class EventRegisterViewSet(APIView):
                                 state = request.data.get('state'),
                                 country = request.data.get('country'),
                                 card_details = request.data.get('card_details'),
-                                amount=event_register["amount"],
+                                amount=amount,
                                 payment_id=event_register["id"],
                                 order_date=event_register["created_at"],
                                 is_pay = True
                             )
-                            send_success_email(register_user_mail)
+                            send_success_email(register_user_mail, booking_id, first_name, last_name, amount, event_for_register)
                         except Exception as e:
                             return Response({
                                     "message":"All field required",
