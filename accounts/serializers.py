@@ -20,6 +20,11 @@ from .models import User
 from rest_framework.response import Response
 
 
+from django.contrib.auth.models import Group
+
+
+
+
 
 # custom serializer to allow user log in
 class CustomJWTSerializer(TokenObtainPairSerializer):
@@ -59,11 +64,12 @@ class PermissionSerializer(serializers.ModelSerializer):
 class GroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Group
-        fields = ("name",)
+        fields = ("id","name")
 
 
 class UserSerializer(serializers.ModelSerializer):
     Donation = DonationSerializer(many=True, read_only=True)
+    groups = GroupSerializer(many=True, read_only=True)
     class Meta:
         model = User
         fields = (
@@ -81,11 +87,13 @@ class UserSerializer(serializers.ModelSerializer):
             "country",
             "Donation",
             "phone_number",
-            "country"
+            "country",
+            "groups",
         )
         extra_kwargs = {
             'password': {'write_only': True},
         }
+
 
     def validate(self, data):
         request = self.context.get('request')
@@ -96,31 +104,9 @@ class UserSerializer(serializers.ModelSerializer):
     
     def create(self, validate_data):
         user = User.objects.create(
-            
-            # email=validate_data["email"],
-            # phone_number = validate_data["phone_number"],
-            # name=validate_data["name"],
-            # smart_card=validate_data["smart_card"],
-            # gender=validate_data["gender"],
-            # age=validate_data["age"],
-            # address=validate_data["address"],
-            # city=validate_data["city"],
-            # state=validate_data["state"],
-            # profile_picture=validate_data["profile_picture"],
-            # country=validate_data["country"],
-
             email=validate_data.get("email", "none"),
             phone_number=validate_data.get("phone_number", "none"),
-            name=validate_data.get("name", "none"),
-            # smart_card=validate_data.get("smart_card", "none"),
-            # gender=validate_data.get("gender", "none"),
-            # age=validate_data.get("age", "none"),
-            # address=validate_data.get("address", "none"),
-            # city=validate_data.get("city", "none"),
-            # state=validate_data.get("state", "none"),
-            # profile_picture=validate_data.get("profile_picture", "none"),
-            # country=validate_data.get("country", "none"),
-
+            name=validate_data.get("name", "none")
         )
         print("End User======================", user)
         user.set_password(validate_data["password"])

@@ -299,6 +299,7 @@ class LoginView(APIView):
             response = serializer.get_jwt_token(serializer.data)
             return Response(response,status = status.HTTP_200_OK)
         
+        
         except Exception as e:
             print("error=================",e)
             return Response(
