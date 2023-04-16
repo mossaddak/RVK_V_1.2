@@ -287,6 +287,7 @@ class LoginView(APIView):
         try:
             data = request.data
             serializer = LoginSerializer(data=data)
+            
 
             if not serializer.is_valid():
                 return Response(

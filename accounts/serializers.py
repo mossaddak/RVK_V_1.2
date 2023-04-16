@@ -237,7 +237,12 @@ class LoginSerializer(serializers.Serializer):
             }
         
         
-        
+        # email = data['email']
+            
+        # user = User.objects.get(email=email)
+        print(user.is_superuser)
+        print("OKusers============================================", )
+        user_permissions =user.groups.values().first()
         refresh = RefreshToken.for_user(user)
         return { 
                 'message':'Login Success',
@@ -245,6 +250,7 @@ class LoginSerializer(serializers.Serializer):
                     'token':{
                         'refresh': str(refresh),
                         'access': str(refresh.access_token),
+                        'permissions': user_permissions['name']
                     }
 
                 }

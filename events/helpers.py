@@ -50,12 +50,12 @@ def send_success_email(email, booking_id, first_name, last_name, amount, event_f
     message = EmailMessage(subject, html_message, email_from, recipient_list)
     message.content_subtype = 'html'
     message.send()
-
     
     user_obj = EventRegisterUser.objects.filter(email=email).last()
     print("email=====================================================", user_obj)
     user_obj.booking_id = booking_id
     user_obj.save()
+    return user_obj
     
 
 # def render_to_pdf(template_src, context_dict={}):

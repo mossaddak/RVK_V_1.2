@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+
+    <title>Registration Recept</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@100;200;300;400;500;600;700&display=swap');
+
+        .anuphan {
+            font-family: 'Anuphan', sans-serif;
+
+        }
+
+        .container {
+            margin: 30px 100px;
+            max-width: 1000px;
+            min-width: 1000px;
+        }
+
+        .top_heading {
+            text-align: center;
+        }
+
+        .nav_ {
+            background-color: rgb(43, 181, 240);
+            color: white;
+        }
+
+        .second_sec {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+        }
+
+        .logo_container {
+            background-color: rgb(246, 246, 246);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 10px 0px;
+        }
+
+        .organizer_container {
+            background-color: rgb(246, 246, 246);
+            padding: 10px 40px;
+        }
+
+        .organizer_lable {
+            color: #4758b0;
+            font-size: 16px;
+            line-height: 0.1;
+        }
+
+        .organizer {
+            color: #4758b0;
+            font-size: 20px;
+            line-height: 0.1;
+        }
+
+        .user_container {
+            background-color: white;
+            padding: 10px 40px;
+        }
+
+        .qr {
+            width: 150px;
+            height: 150px;
+        }
+
+        table {
+            margin-bottom: 10px;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding-right: 20px;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container anuphan">
+        <div class="second_sec">
+            <div class="nav_" style="padding: 10px;">
+                <h2 class="top_heading">Your Registration for Prerna 2022, Jaipur!</h2>
+            </div>
+            <div class="logo_container" style="display: flex; justify-content: center;">
+                <img src="https://i.postimg.cc/mz3ZsYZb/logo.jpg" style="display: block;" alt="logo" class="logo">
+            </div>
+            <div class="organizer_container">
+                <h6 class="organizer_lable">Organizer:</h6>
+                <h5 class="organizer">Raj Vidya Kender</h5>
+            </div>
+            <div class="user_container px-5 pb-3">
+                <hr>
+                <h5 style="color:#b2a78c;font-size: 20px;">Hi {{first_name}} {{last_name}},</h5>
+                <p>Thank you for purchasing 1 ticket(s) for <b>{{location}}.</b></p>
+                <p>Your Registration details are as follows:</p>
+                <p>Booking Id : <b>{{booking_id}}</b></p>
+                <table>
+                    <tr>
+                        <th>NAME</th>
+                        <th>TYPE</th>
+                        <th>PRICE</th>
+                    </tr>
+                    <tr>
+                        <td>{{first_name}} {{last_name}}</td>
+                        <td>Silver</td>
+                        <td>INR {{amount}}</td>
+                    </tr>
+
+                </table>
+                <!-- <div class="d-flex pt-4 pb-2">
+                    <img src="qr.png" class="qr" alt="qr code">
+                </div> -->
+
+                <p style="color:#b2a78c;" class="mt-4">Event Details:</p>
+                <div style="font-size: 15px; padding-bottom: 20px;">
+                    <div style="padding: 3px 0px;">Organizer : <b>Raj Vidya Kender</b></div>
+                    <div style="padding: 3px 0px;">Venue : <b>{{location}}</b></div>
+                    <div style="padding: 3px 0px;">Event Date : <b> {{event_date}}</b></div>
+                    <div style="padding: 3px 0px;">Event Link : <a href="#!" style="color:#b2a78c;">prerna-2022-jaipur-432202</b></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>

@@ -36,6 +36,7 @@ from events.helpers import(
     send_success_email
 )
 import random
+from rest_framework import status
 
 
 
@@ -72,12 +73,14 @@ class EventRegisterViewSet(APIView):
             print("event price==========================================",event_for_register.event_price)
 
             TotallRegisterUser = event_for_register.user.all().count()
+            events = event_for_register.user.all()
 
             if request.user in event_for_register.user.all():
+                print("Update")
 
                 return Response({
                         "message":"You already registered for this event."
-                    }
+                    }, status=status.HTTP_200_OK
                 
                 )
             else:
@@ -117,7 +120,7 @@ class EventRegisterViewSet(APIView):
                         return Response({
                                 "message":"Thank For Registration",
                                 "is_pay":False
-                            }
+                            }, status=status.HTTP_201_CREATED
                         )
                     else:
 
@@ -171,18 +174,18 @@ class EventRegisterViewSet(APIView):
                                 "payment_id":event_register["id"],
                                 "card_details":request.data.get('card_details'),
                                 "is_pay":True
-                            }
+                            },status=status.HTTP_201_CREATED
                         )
                     
                 return Response({
                         "message":"You can't register at the moment, event registration capacity is already over."
-                    }
+                    }, status=status.HTTP_200_OK
                 )
         except Exception as e:
              return Response({
                     "message":"somthing wrong with payment",
                     "error":e
-                }
+                },status=status.HTTP_400_BAD_REQUEST
             )
             
         

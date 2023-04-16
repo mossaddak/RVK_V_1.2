@@ -31,7 +31,7 @@ class User(AbstractUser):
 
     age = models.IntegerField(blank=True, null=True)
  
-    profile_picture = models.ImageField( blank=True, null=True)
+    profile_picture = models.ImageField(blank=True, null=True)
 
 
 
