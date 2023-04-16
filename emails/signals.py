@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 from accounts.models import UserVerification
 
 User = get_user_model()
-
+#nice
 
 @receiver(post_save, sender=User)
 def user_created(sender, instance, created, **kwargs):
