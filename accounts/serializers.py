@@ -204,8 +204,6 @@ class LoginSerializer(serializers.Serializer):
     email = serializers.CharField()
     password = serializers.CharField()
 
-    
-
     def validate(self, data):
 
         print("data================================================", data)
@@ -215,7 +213,7 @@ class LoginSerializer(serializers.Serializer):
         user = User.objects.filter(email=email)
         user = user[0]
         user.verified
-        
+
         if user.verified == False:
             raise serializers.ValidationError("Account is not verified")
         print("NEwemial=================================", user.verified)
@@ -242,16 +240,31 @@ class LoginSerializer(serializers.Serializer):
         # user = User.objects.get(email=email)
         print(user.is_superuser)
         print("OKusers============================================", )
-        user_permissions =user.groups.values().first()
-        refresh = RefreshToken.for_user(user)
-        return { 
-                'message':'Login Success',
-                'data':{
-                    'token':{
-                        'refresh': str(refresh),
-                        'access': str(refresh.access_token),
-                        'permissions': user_permissions['name']
-                    }
+        user_permissions = user.groups.values().first()
+        if user_permissions:
+            refresh = RefreshToken.for_user(user)
+            return { 
+                    'message':'Login Success',
+                    'data':{
+                        'token':{
+                            'refresh': str(refresh),
+                            'access': str(refresh.access_token),
+                            'permissions': user_permissions['name']
+                        }
 
+                    }
                 }
-            }
+        else:
+
+            refresh = RefreshToken.for_user(user)
+            return { 
+                    'message':'Login Success',
+                    'data':{
+                        'token':{
+                            'refresh': str(refresh),
+                            'access': str(refresh.access_token),
+                            'permissions':None
+                        }
+
+                    }
+                }

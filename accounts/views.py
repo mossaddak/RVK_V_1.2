@@ -288,20 +288,24 @@ class LoginView(APIView):
             data = request.data
             serializer = LoginSerializer(data=data)
             
-
+            print("Success==============================================================1")
             if not serializer.is_valid():
+                
                 return Response(
+                    
                     {
                         'data':serializer.errors,
                         'message':"something Went Wrong"
                     },status = status.HTTP_400_BAD_REQUEST
                     
                 )
+            
             response = serializer.get_jwt_token(serializer.data)
             return Response(response,status = status.HTTP_200_OK)
         
         
         except Exception as e:
+            
             print("error=================",e)
             return Response(
                     {
