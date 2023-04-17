@@ -26,7 +26,7 @@ from django.utils.html import strip_tags
 #with html template
 def send_otp_via_email(email):
     
-    otp = random.randint(1000,9999)
+    otp = random.randint(1,999999)
     mydict = {
         'otp':f"{otp}"
     }

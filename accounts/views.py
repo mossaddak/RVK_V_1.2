@@ -229,7 +229,9 @@ class VerifyOTPview(APIView):
                 #email = serializer.data['email']
                 otp = serializer.data['otp']
                 user = User.objects.filter(otp=otp)
-                print("User===============================================================================", user)
+
+                # if user.filter(verified=False).exists():
+                #     print("OTPUser===============================================================================", user)
                 if not user.exists():
                     return Response(
                         {
@@ -248,6 +250,7 @@ class VerifyOTPview(APIView):
                 if user.verified == False:
                 
                     user.verified = True
+                    user.otp=""
                     user.save()
 
                     #print("OTPemail=====================================",user[0].verified)
