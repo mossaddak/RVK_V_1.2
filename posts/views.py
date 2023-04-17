@@ -12,11 +12,11 @@ from RVK_WEBPORTAL.pagination import CustomPagination
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    filterset_fields = ("category__name", "author__name", "")
+    #filterset_fields = ("category__name", "author__name", "")
     permission_classes = [IsContentEditor]
-    pagination_class = CustomPagination
+    #pagination_class = CustomPagination
     
 
-    def perform_create(self, serializer):
-        author = self.request.user
-        serializer.save(author=author)
+    # def perform_create(self, serializer):
+    #     author = self.request.user
+    #     serializer.save(author=author)
