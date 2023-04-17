@@ -31,5 +31,7 @@ class DonationModel(models.Model):
     isPaid = models.BooleanField(default=False, null=True)
     order_date = models.DateTimeField(auto_now=True, null=True)
 
+    document = models.FileField(null=True, blank=True)
+
     def __str__(self):
         return f"{self.pk}.{self.payment_id}"
