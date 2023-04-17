@@ -31,6 +31,7 @@ class RvkAboutDescription(models.Model):
 class QuickLinks(models.Model):
     image = models.ImageField(null=True, blank=False)
     description = models.TextField(blank=True, null=True)
+    link = models.CharField(max_length=350, null=True, blank=True)
     def __str__(self):
         return f"{self.pk}.{self.description}"
     
