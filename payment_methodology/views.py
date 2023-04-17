@@ -123,7 +123,7 @@ class DonateView(APIView):
                 'username':request.user,
                 'first_name':first_name,
                 'last_name':last_name,
-                'amount':amount,
+                'amount':amount/100,
                 'payment_id':payment_id,
                 'pan':pan,
                 'address':address
@@ -134,7 +134,7 @@ class DonateView(APIView):
             html_message = render_to_string(html_template, context=mydict)
             subject = 'Payment Success'
             email_from = settings.EMAIL_HOST_USER
-            recipient_list = [request.user]
+            recipient_list = [request.data.get('email')]
 
             user_email = request.user.email
             user_obj = DonationModel.objects.filter(email=user_email).last()
