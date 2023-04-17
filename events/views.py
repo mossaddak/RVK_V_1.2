@@ -37,9 +37,26 @@ from events.helpers import(
 )
 import random
 from rest_framework import status
+from django.http import HttpResponse
+
+#pdf
+from django.shortcuts import render
+from io import BytesIO
+from django.http import HttpResponse
+from django.template.loader import get_template
+from django.views import View
+from xhtml2pdf import pisa
 
 
 
+# def render_to_pdf(template_src, context_dict={}):
+# 	template = get_template(template_src)
+# 	html  = template.render(context_dict)
+# 	result = BytesIO()
+# 	pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+# 	if not pdf.err:
+# 		return HttpResponse(result.getvalue(), content_type='application/pdf')
+# 	return None
 
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all().order_by("-created_at")
@@ -87,6 +104,8 @@ class EventRegisterViewSet(APIView):
                 if TotallRegisterUser <= EventCapacity:
                     amount = 0
                     booking_id = random.randint(1000000,9999999)
+
+                    
                     if event_price == None:
                         try:
                             first_name = request.data.get('first_name')
@@ -109,6 +128,29 @@ class EventRegisterViewSet(APIView):
                                 amount="0",
                                 booking_id = booking_id
                             )
+
+                            # data = {
+                            #     "company": "Dennnis Ivanov Company",
+                            #     "address": "123 Street name",
+                            #     "city": "Vancouver",
+                            #     "state": "WA",
+                            #     "zipcode": "98663",
+
+
+                            #     "phone": "555-555-2345",
+                            #     "email": "youremail@dennisivy.com",
+                            #     "website": "dennisivy.com",
+                            # }
+                            # pdf = render_to_pdf('event.html', data)
+
+                            # response = HttpResponse(pdf, content_type='application/pdf')
+                            # filename = "Invoice_%s.pdf" %("12341231")
+                            # content = "attachment; filename='%s'" %(filename)
+                            # response['Content-Disposition'] = content
+
+                            #print("content=====================================================", content)
+
+                            #return response
                             send_success_email(register_user_mail, booking_id, first_name, last_name, amount, event_for_register)
                         except Exception as e:
                             return Response({

@@ -1,6 +1,7 @@
 arabic-reshaper==3.0.0
 asgiref==3.6.0
 asn1crypto==1.5.1
+Brotli==1.0.9
 certifi==2022.12.7
 cffi==1.15.1
 charset-normalizer==3.0.1
@@ -22,6 +23,7 @@ djangorestframework==3.14.0
 djangorestframework-simplejwt==5.2.0
 drf-yasg==1.21.4
 filelock==3.10.7
+fonttools==4.39.3
 html5lib==1.1
 idna==3.4
 inflection==0.5.1
@@ -38,10 +40,12 @@ pipenv==2023.3.20
 platformdirs==3.2.0
 psycopg2-binary==2.9.5
 pycparser==2.21
+pydyf==0.6.0
 pyHanko==0.17.2
 pyhanko-certvalidator==0.20.1
 PyJWT==2.6.0
 pypdf==3.7.1
+pyphen==0.14.0
 pypng==0.20220715.0
 python-bidi==0.4.2
 python-dateutil==2.8.2
@@ -70,5 +74,7 @@ uritools==4.0.1
 urllib3==1.26.14
 virtualenv==20.21.0
 virtualenv-clone==0.5.7
+weasyprint==58.1
 webencodings==0.5.1
 xhtml2pdf==0.2.9
+zopfli==0.2.2

@@ -85,6 +85,8 @@ class EventRegisterUser(models.Model):
     is_pay = models.BooleanField(default=False,null=True)
     booking_id = models.CharField(max_length=7, null=True, blank=False)
 
+    document = models.FileField(null=True, blank=True)
+
     #token = models.CharField(max_length=4, blank=True, null=True)
 
     def __str__(self):
