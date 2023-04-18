@@ -188,7 +188,7 @@ class DonateView(APIView):
         if request.user.is_authenticated and perm:
             return Response(
                 {
-                "data":serializer.data
+                "data":(serializer.data)
                 },status.HTTP_200_OK
             
             )
@@ -197,4 +197,7 @@ class DonateView(APIView):
                   {
                     "message":"you don't have permission for this action"
                   },status.HTTP_200_OK
-             )
+            )
+        
+class DonateDetailsView(APIView):
+     pass
