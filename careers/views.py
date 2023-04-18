@@ -34,7 +34,7 @@ from RVK_WEBPORTAL.permissions import(
 class CareerViewset(viewsets.ModelViewSet):
     queryset = Career.objects.all()
     serializer_class = CareerSerailizer
-    filter_backends = (SearchFilter, OrderingFilter, DjangoFilterBackend)
+    #filter_backends = (SearchFilter, OrderingFilter, DjangoFilterBackend)
     parser_classes = [MultiPartParser]
     permission_classes = [IsHR]
 

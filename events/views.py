@@ -50,6 +50,7 @@ class EventViewSet(viewsets.ModelViewSet):
 class EventRegisterViewSet(APIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
+    
     def post(self, request):
         #TotallRegisterUser = EventRegisterUser.objects.all().count()
         EventCapacity = Event.objects.last().capacity
