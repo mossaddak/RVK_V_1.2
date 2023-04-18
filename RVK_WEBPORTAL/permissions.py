@@ -48,7 +48,7 @@ class IsHR(permissions.BasePermission):
 class IsFinance(permissions.BasePermission):
 
     def has_permission(self, request, view):
-        if request.method == 'POST' and request.user.groups.filter(name='Career,Event,Annoucements').exists():
+        if request.method == 'POST' and request.user.groups.filter(name='Finance Department').exists():
             # allow only users who belong to the 'Career,Event,Annoucements' group to POST
             return True
         

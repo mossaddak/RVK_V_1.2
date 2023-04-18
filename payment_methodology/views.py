@@ -178,3 +178,23 @@ class DonateView(APIView):
                 "error":e
             }
         )
+    
+    def get(self, request):
+        all_donation = DonationModel.objects.all()
+        serializer = DonationSerializer(all_donation, many=True)
+        perm = request.user.groups.filter(name='Finance Department').exists()
+        print(all_donation)
+
+        if request.user.is_authenticated and perm:
+            return Response(
+                {
+                "data":serializer.data
+                },status.HTTP_200_OK
+            
+            )
+        else:
+             return Response(
+                  {
+                    "message":"you don't have permission for this action"
+                  },status.HTTP_200_OK
+             )

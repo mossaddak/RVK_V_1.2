@@ -115,8 +115,7 @@ class Profile(APIView):
         serializer = UserSerializer(user)
         return Response(serializer.data)
     
-
-
+    
     def patch(self, request):
         try:
             userid = request.user.id
