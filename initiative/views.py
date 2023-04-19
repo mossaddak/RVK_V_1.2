@@ -10,6 +10,9 @@ from rest_framework.viewsets import(
 from RVK_WEBPORTAL.permissions import(
     IsContentEditor
 )
+from rest_framework.views import (
+    APIView
+)
 
 from .serializer import(
     HumanitarianTopSectionSerializer,
@@ -88,3 +91,10 @@ class PeaceEducationProgramAndEducationSecondSectionView(ModelViewSet):
     queryset = PeaceEducationProgramAndEducationSecondSection.objects.all()
     permission_classes = [IsContentEditor]
     parser_classes = [parsers.FormParser, parsers.MultiPartParser]
+
+# class AllInitiative(APIView):
+#     humanitarian_top = HumanitarianTopSection.objects.all()
+#     humanitarian_bottom = HumanitarianBottomSections.objects.all()
+#     all_q = humanitarian_top | humanitarian_bottom
+
+

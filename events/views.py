@@ -68,9 +68,9 @@ class EventRegisterViewSet(APIView):
 
             all_events = Event.objects.all()
             event_for_register = get_object_or_404(all_events, pk=event_id)
-            #print(event_register["id"])
+            #print(event_register["id"]) 
             event_price = event_for_register.event_price
-            print("event price==========================================",event_for_register.event_price)
+            print("Testing event price==========================================",event_for_register.event_price)
 
             TotallRegisterUser = event_for_register.user.all().count()
             events = event_for_register.user.all()
@@ -94,12 +94,13 @@ class EventRegisterViewSet(APIView):
                             first_name = request.data.get('first_name')
                             last_name = request.data.get('last_name')
                             amount = "Free"
+                            print("TestinEmail=====================================>", request.user.email)
                             EventRegisterUser.objects.create(
                                 event = event_for_register,
                                 user = request.user,
                                 first_name = first_name,
                                 last_name = last_name,
-                                email = request.data.get('email'),
+                                email = request.user.email,
                                 phone_number = request.data.get('phone_number'),
                                 smart_card_number = request.data.get('smart_card_number'),
                                 address = request.data.get('address'),
@@ -134,9 +135,11 @@ class EventRegisterViewSet(APIView):
 
                         client = razorpay.Client(auth=(KEY_ID, KEY_SECRET))
                         currency = "INR"
-                        amount = request.data.get('amount')
-                        data = {"amount": int(amount)*100, "currency": currency}
+                        #amount = request.data.get('amount')
+                        print("Event price=================================>", event_price)
+                        data = {"amount": int(event_price)*100, "currency": currency}
                         event_register = client.order.create(data=data)
+                        
                         try:
                             first_name = request.data.get('first_name')
                             last_name = request.data.get('last_name')
@@ -146,7 +149,7 @@ class EventRegisterViewSet(APIView):
                                 user = request.user,
                                 first_name = first_name,
                                 last_name = last_name,
-                                email = request.data.get('email'),
+                                email = request.user.email,
                                 phone_number = request.data.get('phone_number'),
                                 smart_card_number = request.data.get('smart_card_number'),
                                 address = request.data.get('address'),
@@ -155,7 +158,7 @@ class EventRegisterViewSet(APIView):
                                 state = request.data.get('state'),
                                 country = request.data.get('country'),
                                 card_details = request.data.get('card_details'),
-                                amount=amount,
+                                amount=event_price,
                                 payment_id=event_register["id"],
                                 order_date=event_register["created_at"],
                                 is_pay = True

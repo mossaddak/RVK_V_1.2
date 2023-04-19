@@ -198,6 +198,3 @@ class DonateView(APIView):
                     "message":"you don't have permission for this action"
                   },status.HTTP_200_OK
             )
-        
-class DonateDetailsView(APIView):
-     pass

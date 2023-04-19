@@ -25,8 +25,6 @@ from RVK_WEBPORTAL.permissions import(
 )
 
 
-
-
 # class ReadOnlyPermission(BasePermission):
 #     def has_permission(self, request, view):
 #         return request.method in SAFE_METHODS
