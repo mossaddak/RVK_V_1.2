@@ -89,7 +89,7 @@ class EventRegisterViewSet(APIView):
                     booking_id = random.randint(1000000,9999999)
 
                     
-                    if event_price == None:
+                    if event_price == None or event_price == "null":
                         try:
                             first_name = request.data.get('first_name')
                             last_name = request.data.get('last_name')
@@ -105,7 +105,7 @@ class EventRegisterViewSet(APIView):
                                 smart_card_number = request.data.get('smart_card_number'),
                                 address = request.data.get('address'),
                                 pin_code = request.data.get('pin_code'),
-                                city = request.data.get('pin_code'),
+                                city = request.data.get('city'),
                                 state = request.data.get('state'),
                                 country = request.data.get('country'),
                                 is_pay = request.data.get('amount'),

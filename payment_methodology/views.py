@@ -96,14 +96,11 @@ class DonateView(APIView):
             address = request.data.get('address')
             DonationModel.objects.create(
                 user = request.user,
-
-
                 first_name = first_name,
                 last_name = last_name,
                 email = request.data.get('email'),
                 phone_number = request.data.get('phone_number'),
                 address = address,
-
                 pin_code = request.data.get('pin_code'),
                 city = request.data.get('pin_code'),
                 state = request.data.get('state'),
@@ -127,7 +124,6 @@ class DonateView(APIView):
                 'payment_id':payment_id,
                 'pan':pan,
                 'address':address
-
             }
 
             html_template = 'payment_success.html'
