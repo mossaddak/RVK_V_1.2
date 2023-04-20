@@ -5,9 +5,11 @@ from .serializers import(
     UserSerializer,
     VeriFyAccountSerializer,
     LoginSerializer,
-    GroupSerializer
+    GroupSerializer,
+    UpdatePermissionSerializer
 )
 from rest_framework import status
+
 
 from .models import (
     User
@@ -340,5 +342,90 @@ class GroupView(ModelViewSet):
     queryset = Group.objects.all()
     permission_classes = [SuperAdminPermission]
 
+
+class UpdatePermissions(APIView):
+    #permission_classes = [SuperAdminPermission]
+
+    def get(self, request):
+        email = request.data.get('email')
+        id = request.data.get('id')
+ 
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            return Response(
+                {"error": "User not found"},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        serializer = UserSerializer(user)
+
+        groups = Group.objects.filter(id=id)
+
+        if not groups.exists():
+            return Response(
+                {"error": "Group not found"},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        if not request.user.is_superuser:
+            return Response(
+                {
+                    "message":"You don't have permission for this"
+                }
+            )
+        else:
+            
+        
+            return Response(
+                {
+                    "data":serializer.data
+                },status=status.HTTP_200_OK
+                
+                
+            )
+    
+    
+    def patch(self, request):
+        email = request.data.get('email')
+        id = request.data.get('id')
+        if not request.user.is_superuser:
+            return Response(
+                {
+                    "message":"You don't have permission for this"
+                }
+            )
+
+        else:
+
+            try:
+                user = User.objects.get(email=email)
+            except User.DoesNotExist:
+                return Response(
+                    {"error": "User not found"},
+                    status=status.HTTP_404_NOT_FOUND
+                )
+
+            user.groups.clear()
+
+            try:
+                group = Group.objects.get(id=id)
+            except Group.DoesNotExist:
+                return Response(
+                    {"error": "Group not found"},
+                    status=status.HTTP_404_NOT_FOUND
+                )
+
+            user.groups.add(group)
+            serializer = UserSerializer(user)
+
+            return Response(
+                {
+                    "message": "Successfully permission set",
+                    "data": serializer.data
+                },
+                status=status.HTTP_200_OK
+            )
+        
 
 

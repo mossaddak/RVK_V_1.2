@@ -272,3 +272,9 @@ class LoginSerializer(serializers.Serializer):
 
                     }
                 }
+
+
+class UpdatePermissionSerializer(serializers.Serializer):
+    email = serializers.CharField()
+    id = serializers.CharField()
+
