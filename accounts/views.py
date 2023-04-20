@@ -4,13 +4,15 @@ from rest_framework.views import APIView
 from .serializers import(
     UserSerializer,
     VeriFyAccountSerializer,
-    LoginSerializer
+    LoginSerializer,
+    GroupSerializer
 )
 from rest_framework import status
 
 from .models import (
     User
 )
+from django.contrib.auth.models import Group
 import uuid
 from django.core.mail import send_mail
 from .models import(
@@ -26,6 +28,17 @@ from rest_framework_simplejwt.authentication import (
     JWTAuthentication
 )
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.viewsets import(
+    ModelViewSet
+)
+from rest_framework.permissions import (
+    IsAdminUser,
+    BasePermission
+) 
+
+
+
+
 
 
 #User = get_user_model()
@@ -316,3 +329,16 @@ class LoginView(APIView):
                     },status = status.HTTP_400_BAD_REQUEST
                     
                 )
+
+
+class SuperAdminPermission(BasePermission):
+    def has_permission(self, request, view):
+        return request.user.is_superuser
+
+class GroupView(ModelViewSet):
+    serializer_class = GroupSerializer
+    queryset = Group.objects.all()
+    permission_classes = [SuperAdminPermission]
+
+
+

@@ -70,6 +70,7 @@ class GroupSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     Donation = DonationSerializer(many=True, read_only=True)
     groups = GroupSerializer(many=True, read_only=True)
+    is_superuser = serializers.BooleanField(read_only=True)
     class Meta:
         model = User
         fields = (
@@ -89,6 +90,7 @@ class UserSerializer(serializers.ModelSerializer):
             "phone_number",
             "country",
             "groups",
+            "is_superuser",
         )
         extra_kwargs = {
             'password': {'write_only': True},
@@ -249,7 +251,8 @@ class LoginSerializer(serializers.Serializer):
                         'token':{
                             'refresh': str(refresh),
                             'access': str(refresh.access_token),
-                            'permissions': user_permissions['name']
+                            'permissions': user_permissions['name'],
+                            "is_superuser":user.is_superuser,
                         }
 
                     }
@@ -263,7 +266,8 @@ class LoginSerializer(serializers.Serializer):
                         'token':{
                             'refresh': str(refresh),
                             'access': str(refresh.access_token),
-                            'permissions':None
+                            'permissions':None,
+                            "is_superuser":user.is_superuser,
                         }
 
                     }

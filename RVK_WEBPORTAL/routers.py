@@ -1,5 +1,8 @@
 from rest_framework import routers
-from accounts.views import AccountViewSet
+from accounts.views import (
+    AccountViewSet,
+    GroupView
+)
 from django.urls import path
 from posts.views import PostViewSet
 
@@ -78,6 +81,10 @@ from initiative.views import(
 
 
 router = routers.DefaultRouter()
+
+#accounts
+router.register(r'group',GroupView)
+
 
 
 router.register(r'posts',PostViewSet)
