@@ -16,7 +16,6 @@ from .models import (
     Event,
     EventRegisterUser
 )
-
 from rest_framework import (
     parsers,
 ) 
@@ -31,7 +30,6 @@ from accounts.models import(
     User
 )
 from django.shortcuts import get_object_or_404
-
 from events.helpers import(
     send_success_email
 )
@@ -198,9 +196,7 @@ class EventRegisterViewSet(APIView):
     def get(self,request):
         eventregister_model = EventRegisterUser.objects.all()
         serializer = EventRegisterSerializer(eventregister_model, many=True)
-
-
-        if request.user.groups.filter(name='Finance Department').exists():
+        if request.user.groups.filter(name='Finance Department').exists() or request.user.groups.filter(name='Superadmin').exists():
             return Response(
                 {
                     "message":"data fetch successfully",

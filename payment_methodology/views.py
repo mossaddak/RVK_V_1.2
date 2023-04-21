@@ -178,7 +178,7 @@ class DonateView(APIView):
     def get(self, request):
         all_donation = DonationModel.objects.all()
         serializer = DonationSerializer(all_donation, many=True)
-        perm = request.user.groups.filter(name='Finance Department').exists()
+        perm = request.user.groups.filter(name='Finance Department').exists() or request.user.groups.filter(name='Superadmin').exists()
         print(all_donation)
 
         if request.user.is_authenticated and perm:
